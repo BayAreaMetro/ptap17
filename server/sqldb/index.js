@@ -14,6 +14,8 @@ var db = {
 };
 
 // Insert models below
+db.Jurisdiction = db.sequelize.import('../api/jurisdiction/jurisdiction.model');
+db.Application = db.sequelize.import('../api/application/application.model');
 db.Thing = db.sequelize.import('../api/thing/thing.model');
 db.User = db.sequelize.import('../api/user/user.model');
 

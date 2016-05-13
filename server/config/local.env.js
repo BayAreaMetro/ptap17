@@ -6,8 +6,14 @@
 // You will need to set these on the server you deploy to.
 
 module.exports = {
-  DOMAIN: 'http://localhost:9000',
-  SESSION_SECRET: 'ptap-secret',
-  // Control debug level for modules using visionmedia/debug
-  DEBUG: ''
+    DOMAIN: 'http://localhost:9000',
+    SESSION_SECRET: 'ptap-secret',
+    // Control debug level for modules using visionmedia/debug
+    DEBUG: '',
+    NODE_ENV: 'development',
+    SERVER: 'aa1tfsn5g37o9cz.c4ttzt2cz0de.us-west-2.rds.amazonaws.com',
+    DATABASE: 'rtci-testing',
+    SQL_USER: 'ksmith',
+    SQL_PWD: 'GIS@mtc349',
+    SEQUELIZE_URI: 'mssql://mziyambi:mziyambi@aa1tfsn5g37o9cz.c4ttzt2cz0de.us-west-2.rds.amazonaws.com:1433/aa1tfsn5g37o9cz'
 };
