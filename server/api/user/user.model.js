@@ -27,6 +27,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         phone: DataTypes.STRING,
+        applicationId: DataTypes.STRING,
         role: {
             type: DataTypes.STRING,
             defaultValue: 'user'

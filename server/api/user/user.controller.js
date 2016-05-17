@@ -4,6 +4,7 @@ import {User} from '../../sqldb';
 import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
+import uuid from 'node-uuid';
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
@@ -27,8 +28,11 @@ export function index(req, res) {
   return User.findAll({
     attributes: [
       '_id',
-      'name',
+      'firstname',
+      'lastname',
+      'phone',
       'email',
+      'jurisdictionId',
       'role',
       'provider'
     ]
@@ -43,9 +47,11 @@ export function index(req, res) {
  * Creates a new user
  */
 export function create(req, res, next) {
+  var applicationId = uuid.v1();
   var newUser = User.build(req.body);
   newUser.setDataValue('provider', 'local');
   newUser.setDataValue('role', 'user');
+  newUser.setDataValue('applicationId', applicationId);
   return newUser.save()
     .then(function(user) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {
