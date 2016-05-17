@@ -127,8 +127,11 @@ export function me(req, res, next) {
     },
     attributes: [
       '_id',
-      'name',
+      'firstname',
+      'lastname',
       'email',
+      'phone',
+      'jurisdictionId',
       'role',
       'provider'
     ]
