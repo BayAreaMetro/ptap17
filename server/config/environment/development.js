@@ -6,17 +6,18 @@ module.exports = {
 
   // Sequelize connection opions
   sequelize: {
-    uri: 'sqlite://',
+    uri: process.env.SEQUELIZE_URI,
     options: {
       logging: false,
-      storage: 'dev.sqlite',
+      // storage: 'dev.sqlite',
+      dialect: 'mssql',
       define: {
-        timestamps: false
+        timestamps: true
       }
     }
   },
 
   // Seed database on startup
-  seedDB: false
+  seedDB: true
 
 };

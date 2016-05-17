@@ -15,5 +15,5 @@ module.exports = {
     DATABASE: 'rtci-testing',
     SQL_USER: 'ksmith',
     SQL_PWD: 'GIS@mtc349',
-    SEQUELIZE_URI: 'mssql://mziyambi:mziyambi@aa1tfsn5g37o9cz.c4ttzt2cz0de.us-west-2.rds.amazonaws.com:1433/aa1tfsn5g37o9cz'
+    SEQUELIZE_URI: 'mssql://ksmith:GISatmtc101@aa17rb7oeu0tfn8.c4ttzt2cz0de.us-west-2.rds.amazonaws.com:1433/ptap-dev'
 };
