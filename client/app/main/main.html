@@ -1,18 +1,35 @@
 <header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
-        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
+    <div class="container">
+        <h1>Pavement Technical Assistance Program</h1>
+        <p class="lead">Metropolitan Transportation Commission</p>
+        <img src="assets/images/mtc_logo.png" alt="MTC">
+        <div class="col-md-12 text-center" style="padding-top:10px;" ng-hide="main.isLoggedIn()">
+            <a ui-sref="signup">
+                <button class="btn btn-primary" style="height:80px; font-size: 15pt">Create an Account</button>
+            </a>
+            <a ui-sref="login">
+                <button class="btn btn-primary" style="height:80px; font-size: 15pt">View Application</button>
+            </a>
+        </div>
+        <div class="col-md-12 text-center" style="padding-top:10px;" ng-show="main.isLoggedIn()">
+            <a ui-sref="signup">
+                <button class="btn btn-primary" style="height:80px; font-size: 15pt">Start Application</button>
+            </a>
+            <a ui-sref="signup">
+                <button class="btn btn-primary" style="height:80px; font-size: 15pt">View Application</button>
+            </a>
+        </div>
     </div>
-  </div>
-</div>
+</header>
+<section class="section lightSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Features:</h1>
+                <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
+                    <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

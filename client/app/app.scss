@@ -1,21 +1,216 @@
+/**
+	* 1) Bower Imports
+**/
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 @import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 $fa-font-path: "../bower_components/font-awesome/fonts";
 @import '../bower_components/font-awesome/scss/font-awesome';
+@import '../assets/sass/_utility';
+@import '../assets/sass/_breakPoints';
 
 /**
- * App-wide Styles
+	* 2) Variables
+**/
+
+$messageColor: #373737;
+$close: #EC1D2F;
+$send: #2196f3;
+$check: #4caf50;
+$mainColor: #004677;
+$secondaryColor: #999999;
+$tertiaryColor:#0087E5;
+$darkColor:#002540;
+$lightColor: #EBF0F6;
+$iconRed: #d9534f;
+$iconGreen: #5cb85c;
+$iconYellow: #f0ad4e;
+$iconBg: #D2D2D2;
+$iconBorder: #8C8C8C;
+$nestedLink: #677184;
+$nestedHover: #EFF1F5;
+$footer: #EBF0F6;
+$footerNav: #2b3442;
+$nestedNav: rgb(114, 153, 217);
+$grayBg: #F5F5F5;
+$notLoginBg: rgb(253, 253, 253);
+$userTab: #9013FE;
+$mainBgImage: url('../assets/images/1.png');
+
+/**
+ * 3. App-wide Styles
  */
 
+html {
+    height: 100%;
+}
+
+body {
+    height: inherit;
+    width: inherit;
+    background-color: white;
+}
+
+.viewport {
+    height: 100%;
+}
+
 .browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/**
+	* 4) Overrides
+	* Override defaults and bower_components
+**/
+
+// Buttons
+.btn {
+    &.btn-primary {
+        background-color: $mainColor !important;
+    }
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: $close !important;
+    border-color: #ffffff; /*set the color you want here*/
+}
+
+.modal-primary {
+    .modal-header {
+        background-color: $mainColor !important;
+    }
+}
+
+.panel-primary {
+    > .panel-heading {
+        border-color: $mainColor;
+        background-color: $mainColor;
+    }
+}
+
+.dash-headers {
+    color: $secondaryColor;
+}
+
+
+// Tables
+.table-fixed {
+    width: 100%;
+    border: 2px solid #D0D0D0;
+    background-color: #ffffff;
+}
+
+.table-fixed thead {
+    width: 100%;
+    background-color: #ECECEC;
+}
+
+.table-fixed tbody {
+    max-height: 500px;
+    overflow-y: auto;
+    width: 100%;
+    background-color: #ffffff;
+    .btn {
+        text-align: right;
+        padding-top: 5px;
+    }
+}
+
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+    display: block;
+}
+
+.table-fixed thead > tr> th {
+    float: left;
+    font-weight: 400;
+    text-align: center;
+    background-color: #ECECEC;
+}
+
+.table-fixed tbody tr {
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: transparent;
+}
+
+.table-fixed tbody td {
+    float: left;
+    font-weight: 500;
+    text-align: left;
+    font-size: 12px;
+    vertical-align: middle;
+    background-color: transparent;
+}
+
+.table-fixed tfoot {
+    background-color: #ECECEC;
+    height: 40px;
+    nav {
+        position: relative;
+        text-align: center;
+        ul {
+            @include box-shadow(0px 4px 3px -3px rgba(0, 0, 0, 0.64));
+            a {
+                border-radius: 0px;
+                color: $secondaryColor;
+                padding: {
+                    top: 10px;
+                }
+            }
+        }
+    }
+}
+
+.ng-invalid {
+    .ng-dirty {}
+}
+
+.ng-invalid {
+    &.ng-untouched {
+        background-color: #FFFFFF;
+        +span {
+            .validation-invalid {
+                display: none;
+            }
+        }
+    }
+}
+
+.validation-valid {
+    display: none;
+}
+
+.form-group {
+    margin: {
+        top: 15px;
+    }
+}
+
+.classBreakDown {
+    .validation-invalid {
+        position: absolute;
+        margin-top: 37px;
+    }
+}
+
+.smallerScreen {
+    display: none;
 }
 
 // Component styles are injected through grunt
+
 /* inject:scss */
+@import 'account/application/application.scss';
 @import 'admin/admin.scss';
 @import 'main/main.scss';
 @import '../components/footer/footer.scss';
