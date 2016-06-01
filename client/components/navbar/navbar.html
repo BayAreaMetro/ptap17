@@ -1,29 +1,134 @@
-<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarController">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">ptap</a>
+<!-- <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarController">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">ptap</a>
+        </div>
+        <div uib-collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="item in nav.menu" ui-sref-active="active">
+                    <a ui-sref="{{item.state}}">{{item.title}}</a>
+                </li>
+                <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Create an Account</a></li>
+                <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+                <li ng-show="nav.isLoggedIn()">
+                    <p class="navbar-text">Hello {{ nav.getCurrentUser().firstname }} {{ nav.getCurrentUser().lastname }}</p>
+                </li>
+                <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+                <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+            </ul>
+        </div>
     </div>
-    <div uib-collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in nav.menu" ui-sref-active="active">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
-        </li>
-        <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
-      </ul>
+</div> -->
+<!-- main-navigation start -->
+<!-- ================ -->
+<!-- <div class="main-navigation">
 
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Create an Account</a></li>
-        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
-        <li ng-show="nav.isLoggedIn()"><p class="navbar-text">Hello {{ nav.getCurrentUser().firstname }} {{ nav.getCurrentUser().lastname }}</p> </li>
-        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
-      </ul>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+           
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Create an Account</a></li>
+                    <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+                    <li ng-show="nav.isLoggedIn()">
+                        <p class="navbar-text">Hello {{ nav.getCurrentUser().firstname }} {{ nav.getCurrentUser().lastname }}</p>
+                    </li>
+                    <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+                    <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+   
+</div> -->
+<!-- main-navigation end -->
+<!-- header start classes:
+        fixed: fixed navigation mode (sticky menu) e.g. <header class="header fixed clearfix">
+         dark: dark header version e.g. <header class="header dark clearfix">
+      ================ -->
+<header class="header dark clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- header-left start -->
+                <!-- ================ -->
+                <div class="header-left clearfix">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="index.html"><img id="logo" src="assets/images/logo.png" alt="iDea"></a>
+                    </div>
+                    <!-- name-and-slogan -->
+                   <!--  <div class="site-slogan">
+                        Clean &amp; Powerful Bootstrap Theme
+                    </div> -->
+                </div>
+                <!-- header-left end -->
+            </div>
+            <div class="col-md-9">
+                <!-- header-right start -->
+                <!-- ================ -->
+                <div class="header-right clearfix">
+                    <!-- main-navigation start -->
+                    <!-- ================ -->
+                    <div class="main-navigation animated">
+                        <!-- navbar start -->
+                        <!-- ================ -->
+                        <nav class="navbar navbar-default" role="navigation">
+                            <div class="container-fluid">
+                                <!-- Toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="active">
+                                            <a href="index.html">Home</a>
+                                        </li>
+                                        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Create an Account</a></li>
+                                        <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+                                        <li ng-show="nav.isLoggedIn()">
+                                            <p class="navbar-text">Hello {{ nav.getCurrentUser().firstname }} {{ nav.getCurrentUser().lastname }}</p>
+                                        </li>
+                                        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+                                        <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- navbar end -->
+                    </div>
+                    <!-- main-navigation end -->
+                </div>
+                <!-- header-right end -->
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+</header>
+<!-- header end -->
