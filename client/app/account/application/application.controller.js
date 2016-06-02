@@ -8,6 +8,22 @@
             $scope.reviewSection1 = function() {
                 $state.go('application.form-2');
             };
+
+            $scope.reviewSection2 = function() {
+                $state.go('application.form-3');
+            };
+
+            $scope.reviewSection3 = function() {
+                $state.go('application.form-4');
+            };
+
+            $scope.reviewSection4 = function() {
+                $state.go('application.form-5');
+            };
+
+            $scope.reviewSection5 = function() {
+                $state.go('application.form-6');
+            };
         }
     }
 
@@ -17,8 +33,6 @@
             controller: ApplicationComponent
         });
     angular.module('ptapApp')
-        .controller('ApplicationCtrl', {
-            controller: ApplicationComponent
-        });
+        .controller('ApplicationCtrl', ApplicationComponent);
 
 })();
