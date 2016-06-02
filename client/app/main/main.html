@@ -21,7 +21,8 @@
             <div class="row" style="text-align:center">
                 <div class="col-md-12" style="text-align:center">
                     <div class="row">
-                        <div class="col-sm-6" style="text-align:center">
+                    <!-- Logged out -->
+                        <div class="col-sm-6" style="text-align:center" ng-hide="main.isLoggedIn()">
                             <div class="box-style-1 white-bg" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
                                 <i class="fa fa-user"></i>
                                 <h2>Create an Account</h2>
@@ -29,12 +30,29 @@
                                 <a href="page-services.html" class="btn-default btn">Create Account</a>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                         <div class="col-sm-6" ng-hide="main.isLoggedIn()">
                             <div class="box-style-1 white-bg" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
                                 <i class="fa fa-file"></i>
                                 <h2>View Application</h2>
                                 <p>To view a completed application, or to continue an application in progress, login to your account.</p>
                                 <a href="page-services.html" class="btn-default btn">Login</a>
+                            </div>
+                        </div>
+                        <!-- Logged in -->
+                        <div class="col-sm-6" style="text-align:center" ng-show="main.isLoggedIn()">
+                            <div class="box-style-1 white-bg" data-animation-effect="fadeInUpSmall" data-effect-delay="0">
+                                <i class="fa fa-user"></i>
+                                <h2>Manage Account</h2>
+                                <p>Update your account information.</p>
+                                <a ui-sref="myaccount" class="btn-success btn">Manage Account</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" ng-show="main.isLoggedIn()">
+                            <div class="box-style-1 white-bg" data-animation-effect="fadeInUpSmall" data-effect-delay="200">
+                                <i class="fa fa-file"></i>
+                                <h2>View Application</h2>
+                                <p>Create or continue your application.</p>
+                                <a ui-sref="application" class="btn-success btn">View</a>
                             </div>
                         </div>
                        
