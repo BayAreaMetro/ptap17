@@ -11,6 +11,7 @@ angular.module('ptapApp', [
   'ui.bootstrap',
   'validation.match',
   'ngAnimate'
+  
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

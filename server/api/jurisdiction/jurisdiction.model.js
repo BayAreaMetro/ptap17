@@ -13,6 +13,10 @@ export default function(sequelize, DataTypes) {
         laneMiles: DataTypes.STRING,
         centerLineMiles: DataTypes.STRING,
         lastAwardRound: DataTypes.STRING,
-        lastInspection: DataTypes.STRING
+        lastInspection: DataTypes.STRING,
+        street: DataTypes.STRING,
+        street2: DataTypes.STRING,
+        city: DataTypes.STRING,
+        zip: DataTypes.STRING
     });
 }

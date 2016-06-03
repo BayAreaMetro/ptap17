@@ -27,6 +27,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         phone: DataTypes.STRING,
+        jurisdictionId: DataTypes.STRING,
         applicationId: DataTypes.STRING,
         role: {
             type: DataTypes.STRING,
@@ -39,8 +40,8 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         provider: DataTypes.STRING,
-        salt: DataTypes.STRING,
-        jurisdictionId: DataTypes.INTEGER
+        salt: DataTypes.STRING
+
 
     }, {
 

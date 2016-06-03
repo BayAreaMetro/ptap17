@@ -26,14 +26,14 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Network Center Lines Miles</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" ng-model="application.networkCenterLineMiles">
                         <i class="fa fa-user form-control-feedback"></i>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">% of Network to be Surveyed</label>
-                        <input type="password" class="form-control">
+                        <input type="password" class="form-control" ng-model="application.networkSurveyPercent">
                         <i class="fa fa-lock form-control-feedback"></i>
                     </div>
                 </div>
@@ -42,14 +42,14 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Network Miles that will be Surveyed</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" ng-model="application.networkMilesForSurvey">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Network Miles Remaining to be Inspected</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" ng-model="application.networkMilesRemaining">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
@@ -72,14 +72,14 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Additional funds amount</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" ng-model="application.networkAdditionalFunds">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Percent Completed with Addtional Funding</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" ng-model="application.networkPercentAdditionalFunds">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
@@ -89,22 +89,22 @@
                 <br>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Arterials
+                        <input type="checkbox" value="" ng-model="application.arterials"> Arterials
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Collectors
+                        <input type="checkbox" value="" ng-model="application.collectors"> Collectors
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Residentials
+                        <input type="checkbox" value="" ng-model="application.residentials"> Residentials
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Other (Please describe below)
+                        <input type="checkbox" value="" ng-model="application.other"> Other (Please describe below)
                     </label>
                 </div>
             </div>
@@ -112,7 +112,7 @@
                 <div class="col-md-8">
                     <div class="form-group has-feedback">
                         <label class="control-label">Other Description</label>
-                        <textarea rows="4" class="form-control"></textarea>
+                        <textarea rows="4" class="form-control" ng-model="application.otherDescription"></textarea>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                 <div class="col-md-8">
                     <div class="form-group has-feedback">
                         <label class="control-label">Project Description</label>
-                        <textarea rows="4" class="form-control"></textarea>
+                        <textarea rows="4" class="form-control" ng-model="application.npamProjectdescription"></textarea>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Total Estimated Cost</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" ng-model="application.npamEstimatedcost">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
@@ -141,42 +141,42 @@
                 <br>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Signs
+                        <input type="checkbox" value="" ng-model="application.signs"> Signs
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Storm Drains
+                        <input type="checkbox" value="" ng-model="application.stormDrains"> Storm Drains
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Curbs
+                        <input type="checkbox" value="" ng-model="application.curbs"> Curbs
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Gutters
+                        <input type="checkbox" value="" ng-model="application.gutters"> Gutters
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Sidewalks
+                        <input type="checkbox" value="" ng-model="application.sideWalks"> Sidewalks
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Traffic Signals
+                        <input type="checkbox" value="" ng-model="application.trafficSignals"> Traffic Signals
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Street Lights
+                        <input type="checkbox" value="" ng-model="application.streetLights"> Street Lights
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value=""> Other
+                        <input type="checkbox" value="" ng-model="application.otherAsset"> Other
                     </label>
                 </div>
             </div>
@@ -184,7 +184,7 @@
                 <div class="col-md-8">
                     <div class="form-group has-feedback">
                         <label class="control-label">Other Description</label>
-                        <textarea rows="4" class="form-control"></textarea>
+                        <textarea rows="4" class="form-control" ng-model="application.otherAssetDescription"></textarea>
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                 <div class="col-md-8">
                     <div class="form-group has-feedback">
                         <label class="control-label">Project Description</label>
-                        <textarea rows="4" class="form-control"></textarea>
+                        <textarea rows="4" class="form-control" ng-model="application.pdpProjectDescription"></textarea>
                     </div>
                 </div>
             </div>
@@ -203,7 +203,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Anticipated Construction Start Date</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" ng-model="application.pdpAnticipatedConstructionDate">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Total Estimated Cost</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" ng-model="application.pdpEstimatedCost">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
@@ -222,12 +222,12 @@
                 <br>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Yes
+                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2" ng-model="application.pdpFederalAidEligible"> Yes
                     </label>
                 </div>
                 <div class="radio disabled">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3" disabled=""> No
+                        <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3" disabled="" ng-model="application.pdpFederalAidEligible"> No
                     </label>
                 </div>
             </div>
@@ -236,17 +236,17 @@
                 <br>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Yes
+                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2" ng-model="application.pdpConstructionFullyFunded"> Yes
                     </label>
                 </div>
                 <div class="radio disabled">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3" disabled=""> No
+                        <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3" disabled="" ng-model="application.pdpConstructionFullyFunded"> No
                     </label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-default" ng-click="save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
-            <button type="submit" class="btn btn-default" ng-click="reviewSection4()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
+            <button type="submit" class="btn btn-default" ng-click="appCtrl.save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+            <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection4()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
         </form>
     </div>
 </div>
