@@ -1,5 +1,5 @@
 <!-- section start -->
-<div class="section gray-bg">
+<div class="section default-bg">
     <div class="container">
         <h2>Project Types</h2>
         <label class="control-label" for="inputSuccess3">Please select project types. (You can selection more than one if necessary).</label>
@@ -20,7 +20,14 @@
             </label>
         </div>
         <br>
+    </div>
+</div>
+<!-- section end -->
+<!-- section start -->
+<div class="section gray-bg">
+    <div class="container">
         <!-- Pavement Management Service Projects -->
+        <h2>Pavement Management Service Project</h2>
         <form role="form">
             <div class="row">
                 <div class="col-md-4">
@@ -88,22 +95,22 @@
                 <br>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="arterials"  ng-model="appCtrl.application.arterials" ng-true-value="'1'" ng-false-value="'0'"> Arterials
+                        <input type="checkbox" name="arterials" ng-model="appCtrl.application.arterials" ng-true-value="'1'" ng-false-value="'0'"> Arterials
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="collectors"  ng-model="appCtrl.application.collectors" ng-true-value="'1'" ng-false-value="'0'"> Collectors
+                        <input type="checkbox" name="collectors" ng-model="appCtrl.application.collectors" ng-true-value="'1'" ng-false-value="'0'"> Collectors
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="residentials"  ng-model="appCtrl.application.residentials" ng-true-value="'1'" ng-false-value="'0'"> Residentials
+                        <input type="checkbox" name="residentials" ng-model="appCtrl.application.residentials" ng-true-value="'1'" ng-false-value="'0'"> Residentials
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="other"  ng-model="appCtrl.application.other" ng-true-value="'1'" ng-false-value="'0'"> Other (Please describe below)
+                        <input type="checkbox" name="other" ng-model="appCtrl.application.other" ng-true-value="'1'" ng-false-value="'0'"> Other (Please describe below)
                     </label>
                 </div>
             </div>
@@ -116,7 +123,14 @@
                 </div>
             </div>
         </form>
+    </div>
+</div>
+<!-- section end -->
+<!-- section start -->
+<div class="section">
+    <div class="container">
         <!-- Non Pavement Asset Management Project -->
+         <h2>Non Pavement Asset Management Project</h2>
         <form role="form">
             <div class="row">
                 <div class="col-md-8">
@@ -188,13 +202,20 @@
                 </div>
             </div>
         </form>
+    </div>
+</div>
+<!-- section end -->
+<!-- section start -->
+<div class="section dark-bg">
+    <div class="container">
         <!-- Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E) -->
+         <h2>Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E)</h2>
         <form role="form">
             <div class="row">
                 <div class="col-md-8">
                     <div class="form-group has-feedback">
                         <label class="control-label">Project Description</label>
-                        <textarea rows="4" class="form-control" ng-model="appCtrl.application.pdpProjectDescription"></textarea>
+                        <textarea rows="4" class="form-control" style="color:white;" ng-model="appCtrl.application.pdpProjectDescription"></textarea>
                     </div>
                 </div>
             </div>
@@ -202,7 +223,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Anticipated Construction Start Date</label>
-                        <input type="email" class="form-control" ng-model="appCtrl.application.pdpAnticipatedConstructionDate">
+                        <input type="email" class="form-control" style="color:white;" ng-model="appCtrl.application.pdpAnticipatedConstructionDate">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
@@ -211,7 +232,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Total Estimated Cost</label>
-                        <input type="email" class="form-control" ng-model="appCtrl.application.pdpEstimatedCost">
+                        <input type="email" class="form-control" style="color:white;" ng-model="appCtrl.application.pdpEstimatedCost">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
@@ -226,7 +247,7 @@
                 </div>
                 <div class="radio disabled">
                     <label>
-                        <input type="radio" name="streetsNotEligible" id="streetsNotEligible" value="No"  ng-model="appCtrl.application.pdpFederalAidEligible"> No
+                        <input type="radio" name="streetsNotEligible" id="streetsNotEligible" value="No" ng-model="appCtrl.application.pdpFederalAidEligible"> No
                     </label>
                 </div>
             </div>

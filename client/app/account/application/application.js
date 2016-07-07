@@ -48,5 +48,12 @@ angular.module('ptapApp')
                         controller: 'ApplicationCtrl'
                     }
                 }
+            }).state('application.success', {
+                views: {
+                    'application-content': {
+                        templateUrl: 'app/account/application/templates/success.html',
+                        controller: 'ApplicationCtrl'
+                    }
+                }
             });
     });

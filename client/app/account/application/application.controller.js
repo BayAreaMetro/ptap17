@@ -10,10 +10,8 @@
             this.contacts = contacts;
             this.applicationId;
             this.application = {};
-            // this.jurisdiction = {};
-            // this.names = [];
-            //Datepicker
 
+            //Datepicker
             function disabled(data) {
                 var date = data.date,
                     mode = data.mode;
@@ -47,9 +45,6 @@
         }
 
         $onInit() {
-
-            //Datepicker
-            // Disable weekend selection
 
             //Load list of jurisdictions for drop down list
             this.jurisdictions.getJurisdictions().then(response => {
@@ -293,6 +288,18 @@
 
         reviewSection5() {
             this.$state.go('application.form-6');
+        }
+
+        submitApplication() {
+            var appId = this.applications.getId();
+            var appData = this.application;
+            this.applications.update(appId, appData).then(info => {
+                console.log(info);
+                this.$state.go('application.success');
+            }).catch(function(error) {
+                console.log(error);
+            });
+
         }
 
         updateJurisdiction() {
