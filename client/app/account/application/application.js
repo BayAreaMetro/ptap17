@@ -13,6 +13,13 @@ angular.module('ptapApp')
                         controller: 'ApplicationCtrl'
                     }
                 }
+            }).state('application.form-2b', {
+                views: {
+                    'application-content': {
+                        templateUrl: 'app/account/application/templates/form-2b-contacts.html',
+                        controller: 'ApplicationCtrl'
+                    }
+                }
             }).state('application.form-3', {
                 views: {
                     'application-content': {

@@ -23,4 +23,9 @@ angular.module('ptapApp')
         this.setCurrent = function(current) {
             currentJurisdiction = current;
         };
+
+        // Set update jurisdiction
+        this.update = function(id, jurisdiction) {
+            return $http.post(urlBase + '/' + id, jurisdiction);
+        };
     });

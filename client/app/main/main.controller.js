@@ -4,18 +4,24 @@
 
     class MainController {
 
-        constructor($http, Auth) {
+        constructor($http, Auth, applications) {
             this.$http = $http;
             this.awesomeThings = [];
             this.isLoggedIn = Auth.isLoggedIn;
             this.isAdmin = Auth.isAdmin;
             this.getCurrentUser = Auth.getCurrentUser;
+            this.applications = applications;
         }
 
         $onInit() {
-            this.$http.get('/api/things').then(response => {
-                this.awesomeThings = response.data;
+            this.getCurrentUser(function(response) {
+               
+            }).then(response => {
+                console.log(response);
+                this.applications.setId(response.applicationId);
             });
+
+
         }
 
         addThing() {

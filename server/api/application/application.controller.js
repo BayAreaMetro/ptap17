@@ -69,7 +69,7 @@ export function index(req, res) {
 export function show(req, res) {
   return Application.find({
     where: {
-      _id: req.params.id
+      applicationId: req.params.id
     }
   })
     .then(handleEntityNotFound(res))
@@ -86,12 +86,12 @@ export function create(req, res) {
 
 // Updates an existing Application in the DB
 export function update(req, res) {
-  if (req.body._id) {
-    delete req.body._id;
+  if (req.body.applicationId) {
+    delete req.body.applicationId;
   }
   return Application.find({
     where: {
-      _id: req.params.id
+      applicationId: req.params.id
     }
   })
     .then(handleEntityNotFound(res))

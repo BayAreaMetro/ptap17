@@ -4,10 +4,30 @@
         <h2>General</h2>
         <form role="form">
             <div class="row">
+                <div class="radio">
+                    <label class="control-label"><strong>Have staff attended training and/or user week meetings?</strong></label>
+                    <br>
+                    <label>
+                        <input type="radio" name="attendTraining" id="attendTraining" value="Yes" ng-model="appCtrl.application.attendTraining"> Yes
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="attendTrainingNo" id="attendTrainingNo" value="No" ng-model="appCtrl.application.attendTraining"> No
+                    </label>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Last Major MTC Inspection</label>
-                        <input type="text" class="form-control" ng-model="application.lastMajorInspection">
+                       <!--  <input type="text" class="form-control" ng-model="appCtrl.application.lastMajorInspection"> -->
+                        <p class="input-group">
+                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="appCtrl.application.lastMajorInspection" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <span class="input-group-btn">
+            <button type="button" class="btn btn-default btn-sm" ng-click="open1()" style="margin:0;"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -15,7 +35,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">List any PMS consultants you prefer to work with (optional)</label>
-                        <input type="text" class="form-control" ng-model="application.pmsConsultants">
+                        <input type="text" class="form-control" ng-model="appCtrl.application.pmsConsultants">
                     </div>
                 </div>
             </div>
@@ -23,7 +43,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">If you have a digital map (e.g. GIS) of your jurisdiction, list the format</label>
-                        <input type="text" class="form-control" placeholder="GIS, PDF, JPEG" ng-model="application.digitalMapFormat">
+                        <input type="text" class="form-control" placeholder="GIS, PDF, JPEG" ng-model="appCtrl.application.digitalMapFormat">
                     </div>
                 </div>
             </div>
@@ -32,17 +52,17 @@
                 <br>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked="" ng-model="application.linkedBaseMap"> Yes
+                        <input type="radio" name="linkedBaseMap" id="linkedBaseMap" value="Yes" ng-model="appCtrl.application.linkedBaseMap"> Yes
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2" ng-model="application.linkedBaseMap"> No
+                        <input type="radio" name="linkedBaseMapNo" id="linkedBaseMapNo" value="No" ng-model="appCtrl.application.linkedBaseMap"> No
                     </label>
                 </div>
                 <div class="radio disabled">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3" ng-model="application.linkedBaseMap"> Not Sure
+                        <input type="radio" name="linkedBaseMapNotSure" id="linkedBaseMapNotSure" value="Not Sure" ng-model="appCtrl.application.linkedBaseMap"> Not Sure
                     </label>
                 </div>
             </div>

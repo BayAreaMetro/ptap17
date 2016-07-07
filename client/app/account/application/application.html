@@ -1,3 +1,4 @@
+<breadcrumb></breadcrumb>
 <!-- section start -->
 <div ui-view="application-content">
     <div class="section gray-bg">
@@ -9,7 +10,7 @@
                         <div class="form-group has-feedback">
                             <label class="control-label">{{appCtrl.jurisdiction.name || 'Jurisdiction Name' }}</label>
                             <select class="form-control" ng-change="appCtrl.updateJurisdiction()" ng-model="appCtrl.jurisdiction._id">
-                               <option ng-repeat="option in appCtrl.names" value="{{option._id}}">{{option.name}}</option>
+                                <option ng-repeat="option in appCtrl.names" value="{{option._id}}">{{option.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -51,7 +52,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-default" ng-click="save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
-                <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection1('its cworking')"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
+                <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection1()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
             </form>
         </div>
     </div>
