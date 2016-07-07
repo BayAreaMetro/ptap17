@@ -280,7 +280,15 @@
         }
 
         reviewSection4() {
-            this.$state.go('application.form-5');
+            var appId = this.applications.getId();
+            var appData = this.application;
+            this.applications.update(appId, appData).then(info => {
+                console.log(info);
+                this.$state.go('application.form-5');
+            }).catch(function(error) {
+                console.log(error);
+            });
+
         }
 
         reviewSection5() {
@@ -314,7 +322,7 @@
             var remaining = this.applications.getNetworkMilesRemaining();
             console.log(remaining);
             var additionalMiles = _.divide(this.application.networkAdditionalFunds, 300);
-            this.application.networkPercentAdditionalFunds = ((additionalMiles + this.application.networkMilesForSurvey)/this.jurisdiction.laneMiles)*100;
+            this.application.networkPercentAdditionalFunds = ((additionalMiles + this.application.networkMilesForSurvey) / this.jurisdiction.laneMiles) * 100;
         }
 
 

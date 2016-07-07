@@ -58,16 +58,16 @@
                 <br>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Yes
+                        <input type="radio" name="additionalFunds" id="additionalFunds" value="Yes" ng-click="showAdditionalFunds = true" ng-model="appCtrl.application.additionalFundsFlag"> Yes
                     </label>
                 </div>
-                <div class="radio disabled">
+                <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3" disabled=""> No
+                        <input type="radio" name="noAdditionalFunds" id="noAdditionalFunds" value="No" ng-model="appCtrl.application.additionalFundsFlag" ng-click="showAdditionalFunds = false"> No
                     </label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" ng-show="showAdditionalFunds">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Additional funds amount</label>
@@ -88,22 +88,22 @@
                 <br>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.arterials"> Arterials
+                        <input type="checkbox" name="arterials"  ng-model="appCtrl.application.arterials" ng-true-value="'1'" ng-false-value="'0'"> Arterials
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.collectors"> Collectors
+                        <input type="checkbox" name="collectors"  ng-model="appCtrl.application.collectors" ng-true-value="'1'" ng-false-value="'0'"> Collectors
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.residentials"> Residentials
+                        <input type="checkbox" name="residentials"  ng-model="appCtrl.application.residentials" ng-true-value="'1'" ng-false-value="'0'"> Residentials
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.other"> Other (Please describe below)
+                        <input type="checkbox" name="other"  ng-model="appCtrl.application.other" ng-true-value="'1'" ng-false-value="'0'"> Other (Please describe below)
                     </label>
                 </div>
             </div>
@@ -140,42 +140,42 @@
                 <br>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.signs"> Signs
+                        <input type="checkbox" ng-model="appCtrl.application.signs" ng-true-value="'1'" ng-false-value="'0'"> Signs
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.stormDrains"> Storm Drains
+                        <input type="checkbox" ng-model="appCtrl.application.stormDrains" ng-true-value="'1'" ng-false-value="'0'"> Storm Drains
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.curbs"> Curbs
+                        <input type="checkbox" ng-model="appCtrl.application.curbs" ng-true-value="'1'" ng-false-value="'0'"> Curbs
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.gutters"> Gutters
+                        <input type="checkbox" ng-model="appCtrl.application.gutters" ng-true-value="'1'" ng-false-value="'0'"> Gutters
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.sideWalks"> Sidewalks
+                        <input type="checkbox" ng-model="appCtrl.application.sideWalks" ng-true-value="'1'" ng-false-value="'0'"> Sidewalks
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.trafficSignals"> Traffic Signals
+                        <input type="checkbox" ng-model="appCtrl.application.trafficSignals" ng-true-value="'1'" ng-false-value="'0'"> Traffic Signals
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.streetLights"> Street Lights
+                        <input type="checkbox" ng-model="appCtrl.application.streetLights" ng-true-value="'1'" ng-false-value="'0'"> Street Lights
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" ng-model="appCtrl.application.otherAsset"> Other
+                        <input type="checkbox" ng-model="appCtrl.application.otherAsset" ng-true-value="'1'" ng-false-value="'0'"> Other
                     </label>
                 </div>
             </div>
@@ -221,12 +221,12 @@
                 <br>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2" ng-model="appCtrl.application.pdpFederalAidEligible"> Yes
+                        <input type="radio" name="streetsEligible" id="streetsEligible" value="Yes" ng-model="appCtrl.application.pdpFederalAidEligible"> Yes
                     </label>
                 </div>
                 <div class="radio disabled">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3" disabled="" ng-model="appCtrl.application.pdpFederalAidEligible"> No
+                        <input type="radio" name="streetsNotEligible" id="streetsNotEligible" value="No"  ng-model="appCtrl.application.pdpFederalAidEligible"> No
                     </label>
                 </div>
             </div>
@@ -235,12 +235,12 @@
                 <br>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2" ng-model="appCtrl.application.pdpConstructionFullyFunded"> Yes
+                        <input type="radio" name="constructionCommitted" id="constructionCommitted" value="Yes" ng-model="appCtrl.application.pdpConstructionFullyFunded"> Yes
                     </label>
                 </div>
                 <div class="radio disabled">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios6" value="option3" disabled="" ng-model="appCtrl.application.pdpConstructionFullyFunded"> No
+                        <input type="radio" name="constructionNotCommitted" id="constructionNotCommitted" value="No" ng-model="appCtrl.application.pdpConstructionFullyFunded"> No
                     </label>
                 </div>
             </div>
