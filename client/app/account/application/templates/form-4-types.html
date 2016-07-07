@@ -26,15 +26,14 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Network Center Lines Miles</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.jurisdiction.laneMiles">
+                        <input type="text" class="form-control" ng-model="appCtrl.jurisdiction.laneMiles" disabled>
                         <i class="fa fa-user form-control-feedback"></i>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">% of Network to be Surveyed</label>
-                        <input type="password" class="form-control" ng-model="appCtrl.application.networkSurveyPercent">
-                        <i class="fa fa-lock form-control-feedback"></i>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkSurveyPercent">
                     </div>
                 </div>
             </div>
@@ -42,14 +41,14 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Network Miles that will be Surveyed</label>
-                        <input type="email" class="form-control" ng-model="appCtrl.application.networkMilesForSurvey">
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkMilesForSurvey" ng-change="appCtrl.updateMilesForSurvey()">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Network Miles Remaining to be Inspected</label>
-                        <input type="email" class="form-control" ng-model="appCtrl.application.networkMilesRemaining">
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkMilesRemaining">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
@@ -72,7 +71,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Additional funds amount</label>
-                        <input type="email" class="form-control" ng-model="appCtrl.application.networkAdditionalFunds">
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkAdditionalFunds" ng-change="appCtrl.updateAdditionalFunds()">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>

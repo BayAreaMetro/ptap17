@@ -13,6 +13,7 @@
             // this.jurisdiction = {};
             // this.names = [];
             //Datepicker
+
             function disabled(data) {
                 var date = data.date,
                     mode = data.mode;
@@ -42,9 +43,11 @@
             $scope.format = $scope.formats[0];
             $scope.altInputFormats = ['M!/d!/yyyy'];
             //End datepicker
+
         }
 
         $onInit() {
+
             //Datepicker
             // Disable weekend selection
 
@@ -66,6 +69,7 @@
                     this.application = response.data;
                     console.log(response.data.lastMajorInspection);
                     this.application.lastMajorInspection = new Date(response.data.lastMajorInspection);
+
                     console.log(this.application);
                     this.contact1Id = this.application.primaryContactId;
                     this.contact2Id = this.application.streetSaverContactId;
@@ -87,16 +91,60 @@
                 }).then(response => {
                     console.log(response.data);
                     this.jurisdiction = response.data;
+                    //Calculate field 
+                    console.log(calculateMiles(this.jurisdiction.laneMiles));
+                    var newValues = calculateMiles(this.jurisdiction.laneMiles);
+                    this.application.networkMilesRemaining = newValues.networkMilesRemaining;
+                    this.application.networkMilesForSurvey = newValues.networkMilesForSurvey;
+                    this.application.networkSurveyPercent = newValues.networkSurveyPercent;
+
+                    //Set global variable for network miles remaining
+                    console.log('setting netowrk miles remainig', this.application.networkMilesRemaining);
+                    this.applications.setNetworkMilesRemaining(this.application.networkMilesRemaining);
+
+                    //Find primary contact
                     return this.contacts.getOne(this.contact1Id);
                 }).then(response => {
                     console.log(response.data);
                     this.contact1 = response.data;
+                    //Find streetsaver contact
                     return this.contacts.getOne(this.contact2Id);
                 }).then(response => {
                     console.log(response.data);
                     this.contact2 = response.data;
                 });
             console.log(this.applicationId, ' is the application id');
+
+            /**
+             * [calculateMiles Returns values for remaining miles, miles for survey and percent of network surveyed]
+             * @param  {[type]} laneMiles [Total centerline miles of the jurisdiction]
+             * @return {[type]}           [Returns object with values]
+             */
+            function calculateMiles(laneMiles) {
+                var calculatedValues = {};
+                var remaining;
+                var survey;
+                var percent;
+
+                if (laneMiles >= 333.33) {
+                    remaining = laneMiles - 333.33;
+                    survey = 333.33;
+                    percent = 100 * (_.divide(333.33, laneMiles));
+                } else if (laneMiles < 333.33) {
+                    remaining = 0;
+                    survey = laneMiles;
+                    percent = 100;
+                }
+
+                calculatedValues = {
+                    networkMilesRemaining: remaining,
+                    networkMilesForSurvey: survey,
+                    networkSurveyPercent: percent
+                };
+                return calculatedValues;
+
+            }
+
         }
 
         retrieveApplication() {
@@ -248,6 +296,28 @@
                 console.log(this.jurisdiction);
             });
         }
+
+        //Update values on input for network miles that will be surveyed
+        updateMilesForSurvey() {
+            var laneMiles = _.toNumber(this.jurisdiction.laneMiles);
+            console.log(laneMiles);
+            if (laneMiles >= 333.33) {
+                //Network miles remaining
+                this.application.networkMilesRemaining = laneMiles - _.toNumber(this.application.networkMilesForSurvey);
+                //Percent of network to be surveyed
+                this.application.networkSurveyPercent = (this.application.networkMilesForSurvey / laneMiles) * 100;
+            }
+
+        }
+
+        updateAdditionalFunds() { //Update values based on input for additional funds
+            var remaining = this.applications.getNetworkMilesRemaining();
+            console.log(remaining);
+            var additionalMiles = _.divide(this.application.networkAdditionalFunds, 300);
+            this.application.networkPercentAdditionalFunds = ((additionalMiles + this.application.networkMilesForSurvey)/this.jurisdiction.laneMiles)*100;
+        }
+
+
     }
 
     angular.module('ptapApp')
