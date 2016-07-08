@@ -10,7 +10,8 @@ angular.module('ptapApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'ngAnimate'
+  'ngAnimate',
+  'ptapApp.breadCrumb.directive'
   
 ])
   .config(function($urlRouterProvider, $locationProvider) {

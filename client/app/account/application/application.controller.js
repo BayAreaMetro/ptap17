@@ -45,7 +45,8 @@
         }
 
         $onInit() {
-
+            //Set page title
+            this.$scope.pageTitle = 'Jurisdiction Information';
             //Load list of jurisdictions for drop down list
             this.jurisdictions.getJurisdictions().then(response => {
                 this.names = response.data;
@@ -150,6 +151,8 @@
         }
 
         reviewSection1() {
+            //Set page title
+            this.$scope.pageTitle = 'Primary Contact';
             this.jurisdiction.jurisdictionId = this.jurisdiction._id;
             console.log(this.jurisdiction);
             var id = this.jurisdiction._id;
@@ -164,6 +167,7 @@
                 console.log(appData);
                 this.applications.update(appId, appData).then(info => {
                     console.log(info);
+
                     this.$state.go('application.form-2');
                 }).catch(function(error) {
                     console.log(error);
@@ -179,6 +183,8 @@
             console.log(this.contact1);
             console.log(this.$scope.contact1Exists);
             this.$scope.contactId = uuid.v1();
+            //Set page title
+            this.$scope.pageTitle = 'StreetSaver Contact';
             if (this.$scope.contact1Exists) {
                 this.$state.go('application.form-2b');
             } else if (!this.$scope.contact1Exists) {
@@ -221,6 +227,8 @@
         }
 
         reviewSection2b() {
+            //Set page title
+            this.$scope.pageTitle = 'General Information';
             console.log(this.contact2);
             console.log(this.$scope.contact2Exists);
             if (this.$scope.contact2Exists) {
@@ -275,6 +283,8 @@
         }
 
         reviewSection3() {
+            //Set page title
+            this.$scope.pageTitle = 'Project Types';
             var appId = this.applications.getId();
             var appData = this.application;
             this.applications.update(appId, appData).then(info => {
@@ -289,6 +299,8 @@
         }
 
         reviewSection4() {
+            //Set page title
+            this.$scope.pageTitle = 'Project Summary';
             var appId = this.applications.getId();
             var appData = this.application;
             this.applications.update(appId, appData).then(info => {
@@ -301,10 +313,13 @@
         }
 
         reviewSection5() {
+            //Set page title
+            this.$scope.pageTitle = 'Signature';
             this.$state.go('application.form-6');
         }
 
         submitApplication() {
+            this.$scope.pageTitle = 'Application Complete';
             var appId = this.applications.getId();
             var appData = this.application;
             this.applications.update(appId, appData).then(info => {
