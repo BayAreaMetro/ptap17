@@ -178,16 +178,17 @@
         reviewSection2() {
             console.log(this.contact1);
             console.log(this.$scope.contact1Exists);
-
+            this.$scope.contactId = uuid.v1();
             if (this.$scope.contact1Exists) {
                 this.$state.go('application.form-2b');
             } else if (!this.$scope.contact1Exists) {
+                this.contact1.contactId = this.$scope.contactId;
                 this.contacts.create(this.contact1).then(response => {
                     console.log(response);
                     this.contacts.setCurrent(response.data);
                     var appId = this.applications.getId();
                     var appData = {
-                        primaryContactId: response.data.contactId
+                        primaryContactId: this.$scope.contactId
                     };
                     console.log(appData);
                     this.applications.update(appId, appData).then(info => {
@@ -225,11 +226,20 @@
             if (this.$scope.contact2Exists) {
                 this.$state.go('application.form-3');
             } else if (!this.$scope.contact2Exists) {
-                var appId = this.applications.getId();
-                var appData = {
-                    streetSaverContactId: this.contact2.contactId
-                };
+                var contact2Id, appId;
+                var appData = {};
+
+
                 if (this.contact2.check) {
+                    if (this.application.primaryContactId) {
+                        contact2Id = this.application.primaryContactId;
+                    } else {
+                        contact2Id = this.$scope.contactId;
+                    }
+                    appId = this.applications.getId();
+                    appData = {
+                        streetSaverContactId: contact2Id
+                    };
                     this.applications.update(appId, appData).then(info => {
                         console.log(info);
                         this.$state.go('application.form-3');
@@ -237,11 +247,15 @@
                         console.log(error);
                     });
                 } else {
+                    this.$scope.contact2Id = uuid.v1();
+                    appId = this.applications.getId();
+
+                    this.contact2.contactId = this.$scope.contact2Id;
                     this.contacts.create(this.contact2).then(response => {
                         console.log(response);
                         appId = this.applications.getId();
                         appData = {
-                            streetSaverContactId: response.data.contactId
+                            streetSaverContactId: this.$scope.contact2Id
                         };
                         console.log(appData);
                         this.applications.update(appId, appData).then(info => {

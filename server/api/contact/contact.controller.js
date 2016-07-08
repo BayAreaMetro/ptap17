@@ -83,7 +83,7 @@ export function create(req, res) {
     console.log(req.body);
     // If primary contact and streetsaver contact are the same, don't create a new contact
     if (!req.body.check) {
-        req.body.contactId = uuid.v1();
+        // req.body.contactId = uuid.v1();
         console.log(req.body);
         return Contact.create(req.body)
             .then(respondWithResult(res, 201))

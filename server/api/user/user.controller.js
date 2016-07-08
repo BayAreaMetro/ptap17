@@ -48,11 +48,11 @@ export function index(req, res) {
  * Creates a new user
  */
 export function create(req, res, next) {
-    var applicationId = uuid.v1();
+    // var applicationId = uuid.v1();
     var newUser = User.build(req.body);
     newUser.setDataValue('provider', 'local');
     newUser.setDataValue('role', 'user');
-    newUser.setDataValue('applicationId', applicationId);
+    // newUser.setDataValue('applicationId', applicationId);
     return newUser.save()
         .then(function(user) {
             var token = jwt.sign({ _id: user._id }, config.secrets.session, {

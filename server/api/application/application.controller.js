@@ -79,6 +79,7 @@ export function show(req, res) {
 
 // Creates a new Application in the DB
 export function create(req, res) {
+  console.log(req.body);
   return Application.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));

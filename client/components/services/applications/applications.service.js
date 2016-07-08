@@ -19,6 +19,14 @@ angular.module('ptapApp')
             return $http.post(urlBase + '/' + id, app);
         };
 
+         // Insert Application ID
+        this.create = function(id) {
+            var body = {
+                applicationId: id
+            };
+            return $http.post(urlBase, body);
+        };
+
 
         // Get session application
         this.getId = function() {
