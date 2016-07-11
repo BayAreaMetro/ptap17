@@ -29,6 +29,7 @@ export default function(sequelize, DataTypes) {
         networkMilesForSurvey: DataTypes.STRING,
         networkSurveyPercent: DataTypes.STRING,
         networkMilesRemaining: DataTypes.STRING,
+        networkAdditionalFundsFlag: DataTypes.STRING,
         networkAdditionalFunds: DataTypes.STRING,
         networkPercentAdditionalFunds: DataTypes.STRING,
         arterials: DataTypes.STRING,

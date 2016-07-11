@@ -19,7 +19,7 @@
             </label>
         </div>
         <br>
-        <p>Costs</p>
+        <!--  <p>Costs</p>
         <p>
             <li>PMS Grant Amount: {{ appCtrl.application.pmsGrantAmount }}</li>
             <li>PMS Local Contribution: {{ appCtrl.application.pmsLocalContribution }}</li>
@@ -33,7 +33,7 @@
             <li>PDP Grant Amount: {{ appCtrl.application.pdpGrantAmount }}</li>
             <li>PDP Local Contribution: {{ appCtrl.application.pdpLocalContribution }}</li>
             <li>PDP Additional Funds: {{ appCtrl.application.pdpAdditionalFunds }}</li>
-        </p>
+        </p> -->
     </div>
 </div>
 <!-- section end -->
@@ -79,16 +79,16 @@
                 <br>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="additionalFunds" id="additionalFunds" value="Yes" ng-click="showAdditionalFunds = true" ng-model="appCtrl.application.additionalFundsFlag"> Yes
+                        <input type="radio" name="networkAdditionalFundsFlag" id="networkAdditionalFundsFlag" value="Yes" ng-model="appCtrl.application.networkAdditionalFundsFlag"> Yes
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="noAdditionalFunds" id="noAdditionalFunds" value="No" ng-model="appCtrl.application.additionalFundsFlag" ng-click="showAdditionalFunds = false"> No
+                        <input type="radio" name="noAdditionalFunds" id="noAdditionalFunds" value="No" ng-model="appCtrl.application.networkAdditionalFundsFlag" ng-click="appCtrl.clearAdditionalFunds()"> No
                     </label>
                 </div>
             </div>
-            <div class="row" ng-show="showAdditionalFunds">
+            <div class="row" ng-show="appCtrl.application.networkAdditionalFundsFlag === 'Yes'">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Additional funds amount</label>
@@ -233,12 +233,26 @@
                     </div>
                 </div>
             </div>
+          <!--   <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Anticipated Construction Start Date</label>
+                        <input type="email" class="form-control" style="color:white;" ng-model="appCtrl.application.test">
+                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                    </div>
+                </div>
+            </div> -->
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Anticipated Construction Start Date</label>
-                        <input type="email" class="form-control" style="color:white;" ng-model="appCtrl.application.pdpAnticipatedConstructionDate">
-                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                        <!--  <input type="text" class="form-control" ng-model="appCtrl.application.lastMajorInspection"> -->
+                        <p class="input-group">
+                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="appCtrl.application.pdpAnticipatedConstructionDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <span class="input-group-btn">
+            <button type="button" class="btn btn-default btn-sm" ng-click="open1()" style="margin:0;"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                        </p>
                     </div>
                 </div>
             </div>

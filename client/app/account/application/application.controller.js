@@ -30,6 +30,10 @@
                 $scope.popup1.opened = true;
             };
 
+            $scope.open2 = function() {
+                $scope.popup2.opened = true;
+            };
+
             $scope.popup1 = {
                 opened: false
             };
@@ -65,6 +69,7 @@
                     this.application = response.data;
                     console.log(response.data.lastMajorInspection);
                     this.application.lastMajorInspection = new Date(response.data.lastMajorInspection);
+                    this.application.pdpAnticipatedConstructionDate = new Date(response.data.pdpAnticipatedConstructionDate);
 
                     console.log(this.application);
                     this.contact1Id = this.application.primaryContactId;
@@ -101,10 +106,22 @@
                     //Calculate Cost Values
                     var newCostValues = this.$scope.calculateCosts(this.application.networkMilesForSurvey);
                     console.log(newCostValues);
+
                     this.application.pmsGrantAmount = newCostValues.grant;
                     this.application.pmsLocalContribution = newCostValues.local;
                     this.application.pmsTotalProjectCost = newCostValues.total;
                     this.application.pmsAdditionalFunds = this.application.networkAdditionalFunds;
+
+                    this.application.npamEstimatedcost = newCostValues.grant;
+                    this.application.npamGrantAmount = newCostValues.grant;
+                    this.application.npamLocalContribution = newCostValues.local;
+                    this.application.npamTotalProjectCost = newCostValues.total;
+                    // this.application.npamAdditionalFunds = this.application.networkAdditionalFunds;
+                    this.application.pdpEstimatedCost = newCostValues.grant;
+                    this.application.pdpGrantAmount = newCostValues.grant;
+                    this.application.pdpLocalContribution = newCostValues.local;
+                    this.application.pdpTotalProjectCost = newCostValues.total;
+                    // this.application.pdpAdditionalFunds = this.application.networkAdditionalFunds;
 
                     //Find primary contact
                     return this.contacts.getOne(this.contact1Id);
@@ -402,8 +419,11 @@
             this.application.pmsAdditionalFunds = this.application.networkAdditionalFunds;
         }
 
-        updateFlag(){
-            console.log(this.application.pmsFlag);
+        clearAdditionalFunds() {
+            this.application.networkAdditionalFunds = '';
+            this.application.networkPercentAdditionalFunds = '';
+            console.log(this.application.networkAdditionalFunds);
+            console.log(this.application.networkPercentAdditionalFunds);
         }
 
 

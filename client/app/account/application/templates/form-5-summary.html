@@ -2,8 +2,8 @@
 <div class="section gray-bg">
     <div class="container">
         <!-- <h2>Project Budget Summary</h2> -->
-        <h3>Pavement Management Service Project</h3>
-        <form role="form">
+        <h3 ng-show="appCtrl.application.pmsFlag === 'Yes'">Pavement Management Service Project</h3>
+        <form role="form" ng-show="appCtrl.application.pmsFlag === 'Yes'">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
@@ -41,8 +41,8 @@
                 </div>
             </div>
         </form>
-        <h3>Non Pavement Asset Management Project</h3>
-        <form role="form">
+        <h3 ng-show="appCtrl.application.npamFlag === 'Yes'">Non Pavement Asset Management Project</h3>
+        <form role="form" ng-show="appCtrl.application.npamFlag === 'Yes'">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
@@ -89,8 +89,8 @@
                 </div>
             </div>
         </form>
-        <h3>Pavement Design Project (PS&E)</h3>
-        <form role="form">
+        <h3 ng-show="appCtrl.application.pdpFlag === 'Yes'">Pavement Design Project (PS&E)</h3>
+        <form role="form" ng-show="appCtrl.application.pdpFlag === 'Yes'">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
