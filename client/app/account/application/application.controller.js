@@ -104,6 +104,7 @@
                     this.application.pmsGrantAmount = newCostValues.grant;
                     this.application.pmsLocalContribution = newCostValues.local;
                     this.application.pmsTotalProjectCost = newCostValues.total;
+                    this.application.pmsAdditionalFunds = this.application.networkAdditionalFunds;
 
                     //Find primary contact
                     return this.contacts.getOne(this.contact1Id);
