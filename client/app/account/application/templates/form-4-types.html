@@ -5,25 +5,40 @@
         <br>
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="Yes"> Pavement Management Service Project
+                <input type="checkbox" value="Yes" ng-model="appCtrl.application.pmsFlag" ng-true-value="'Yes'" ng-false-value="'No'" ng-change="appCtrl.updateFlag()"> Pavement Management Service Project
             </label>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="Yes"> Non Pavement Asset Management Project
+                <input type="checkbox" ng-model="appCtrl.application.npamFlag" ng-true-value="'Yes'" ng-false-value="'No'" ng-change="appCtrl.updateFlag()"> Non Pavement Asset Management Project
             </label>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="Yes"> Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E)
+                <input type="checkbox" ng-model="appCtrl.application.pdpFlag" ng-true-value="'Yes'" ng-false-value="'No'" ng-change="appCtrl.updateFlag()"> Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E)
             </label>
         </div>
         <br>
+        <p>Costs</p>
+        <p>
+            <li>PMS Grant Amount: {{ appCtrl.application.pmsGrantAmount }}</li>
+            <li>PMS Local Contribution: {{ appCtrl.application.pmsLocalContribution }}</li>
+            <li>PMS Additional Funds: {{ appCtrl.application.pmsAdditionalFunds }}</li>
+            <li>PMS Total Cost to Jurisdiction: {{ appCtrl.application.pmsTotalProjectCost }}</li>
+            <li>NPM Total: {{ appCtrl.application.npamTotalProjectCost }}</li>
+            <li>NPM Grant Amount: {{ appCtrl.application.npamGrantAmount }}</li>
+            <li>NPM Local Contribution: {{ appCtrl.application.npamLocalContribution }}</li>
+            <li>NPM Additional Funds: {{ appCtrl.application.npamAdditionalFunds }}</li>
+            <li>PDP Total: {{ appCtrl.application.pdpTotalProjectCost }}</li>
+            <li>PDP Grant Amount: {{ appCtrl.application.pdpGrantAmount }}</li>
+            <li>PDP Local Contribution: {{ appCtrl.application.pdpLocalContribution }}</li>
+            <li>PDP Additional Funds: {{ appCtrl.application.pdpAdditionalFunds }}</li>
+        </p>
     </div>
 </div>
 <!-- section end -->
 <!-- section start -->
-<div class="section gray-bg">
+<div class="section gray-bg" ng-show="appCtrl.application.pmsFlag === 'Yes'">
     <div class="container">
         <!-- Pavement Management Service Projects -->
         <h2>Pavement Management Service Project</h2>
@@ -126,10 +141,10 @@
 </div>
 <!-- section end -->
 <!-- section start -->
-<div class="section">
+<div class="section" ng-show="appCtrl.application.npamFlag === 'Yes'">
     <div class="container">
         <!-- Non Pavement Asset Management Project -->
-         <h2>Non Pavement Asset Management Project</h2>
+        <h2>Non Pavement Asset Management Project</h2>
         <form role="form">
             <div class="row">
                 <div class="col-md-8">
@@ -205,10 +220,10 @@
 </div>
 <!-- section end -->
 <!-- section start -->
-<div class="section dark-bg">
+<div class="section dark-bg" ng-show="appCtrl.application.pdpFlag === 'Yes'">
     <div class="container">
         <!-- Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E) -->
-         <h2>Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E)</h2>
+        <h2>Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E)</h2>
         <form role="form">
             <div class="row">
                 <div class="col-md-8">
@@ -264,9 +279,17 @@
                     </label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-default" ng-click="appCtrl.save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
-            <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection4()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
         </form>
     </div>
 </div>
 <!-- section end -->
+<div>
+    <div class="container">
+        <form>
+            <form>
+                <button type="submit" class="btn btn-default" ng-click="appCtrl.save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+                <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection4()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
+            </form>
+        </form>
+    </div>
+</div>

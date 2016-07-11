@@ -87,9 +87,9 @@
                 }).then(response => {
                     console.log(response.data);
                     this.jurisdiction = response.data;
-                    //Calculate field 
-                    console.log(calculateMiles(this.jurisdiction.laneMiles));
-                    var newValues = calculateMiles(this.jurisdiction.laneMiles);
+                    //Calculate Miles values 
+                    console.log(this.$scope.calculateMiles(this.jurisdiction.laneMiles));
+                    var newValues = this.$scope.calculateMiles(this.jurisdiction.laneMiles);
                     this.application.networkMilesRemaining = newValues.networkMilesRemaining;
                     this.application.networkMilesForSurvey = newValues.networkMilesForSurvey;
                     this.application.networkSurveyPercent = newValues.networkSurveyPercent;
@@ -97,6 +97,13 @@
                     //Set global variable for network miles remaining
                     console.log('setting netowrk miles remainig', this.application.networkMilesRemaining);
                     this.applications.setNetworkMilesRemaining(this.application.networkMilesRemaining);
+
+                    //Calculate Cost Values
+                    var newCostValues = this.$scope.calculateCosts(this.application.networkMilesForSurvey);
+                    console.log(newCostValues);
+                    this.application.pmsGrantAmount = newCostValues.grant;
+                    this.application.pmsLocalContribution = newCostValues.local;
+                    this.application.pmsTotalProjectCost = newCostValues.total;
 
                     //Find primary contact
                     return this.contacts.getOne(this.contact1Id);
@@ -116,7 +123,7 @@
              * @param  {[type]} laneMiles [Total centerline miles of the jurisdiction]
              * @return {[type]}           [Returns object with values]
              */
-            function calculateMiles(laneMiles) {
+            this.$scope.calculateMiles = function(laneMiles) {
                 var calculatedValues = {};
                 var remaining;
                 var survey;
@@ -139,7 +146,32 @@
                 };
                 return calculatedValues;
 
-            }
+            };
+
+            this.$scope.calculateCosts = function(laneMiles) {
+                var costValues = {};
+                var totalCost, localCost, grantAmount;
+                if (laneMiles < 51) {
+                    totalCost = 15000;
+                    localCost = 3000;
+                    grantAmount = 12000;
+                } else if (laneMiles >= 333.33) {
+                    totalCost = 100000;
+                    localCost = 20000;
+                    grantAmount = 80000;
+                } else {
+                    totalCost = laneMiles * 300;
+                    localCost = totalCost * 0.2;
+                    grantAmount = totalCost - localCost;
+                }
+                costValues = {
+                    total: totalCost,
+                    local: localCost,
+                    grant: grantAmount
+                };
+
+                return costValues;
+            };
 
         }
 
@@ -352,6 +384,13 @@
                 this.application.networkSurveyPercent = (this.application.networkMilesForSurvey / laneMiles) * 100;
             }
 
+            // Update Summary Costs
+            var newCostValues = this.$scope.calculateCosts(this.application.networkMilesForSurvey);
+            console.log(newCostValues);
+            this.application.pmsGrantAmount = newCostValues.grant;
+            this.application.pmsLocalContribution = newCostValues.local;
+            this.application.pmsTotalProjectCost = newCostValues.total;
+
         }
 
         updateAdditionalFunds() { //Update values based on input for additional funds
@@ -359,6 +398,11 @@
             console.log(remaining);
             var additionalMiles = _.divide(this.application.networkAdditionalFunds, 300);
             this.application.networkPercentAdditionalFunds = ((additionalMiles + this.application.networkMilesForSurvey) / this.jurisdiction.laneMiles) * 100;
+            this.application.pmsAdditionalFunds = this.application.networkAdditionalFunds;
+        }
+
+        updateFlag(){
+            console.log(this.application.pmsFlag);
         }
 
 

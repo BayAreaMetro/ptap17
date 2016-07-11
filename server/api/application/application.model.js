@@ -19,6 +19,10 @@ export default function(sequelize, DataTypes) {
         pmsConsultants: DataTypes.STRING,
         linkedBaseMap: DataTypes.STRING,
         digitalMapFormat: DataTypes.STRING,
+        //project types
+        pmsFlag: DataTypes.STRING,
+        npamFlag: DataTypes.STRING,
+        pdpFlag: DataTypes.STRING,
         // pavement management service project
         networkTotalPercentage: DataTypes.STRING,
         networkCenterLineMiles: DataTypes.STRING,
