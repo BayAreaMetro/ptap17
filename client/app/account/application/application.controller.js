@@ -2,14 +2,22 @@
 (function() {
 
     class ApplicationComponent {
-        constructor($http, $scope, $state, jurisdictions, applications, contacts) {
+        constructor($http, $scope, $state, jurisdictions, applications, contacts, pages, $rootScope) {
             this.$scope = $scope;
             this.jurisdictions = jurisdictions;
             this.$state = $state;
+            this.pages = pages;
             this.applications = applications;
             this.contacts = contacts;
             this.applicationId;
             this.application = {};
+
+            //Set state change watch
+            $rootScope.$on('$stateChangeStart',
+                function(event, toState, toParams, fromState, fromParams) {
+                    console.log(pages.getPageTitle());
+                    $scope.pageTitle = pages.getPageTitle();
+                });
 
             //Datepicker
             function disabled(data) {
@@ -50,7 +58,8 @@
 
         $onInit() {
             //Set page title
-            this.$scope.pageTitle = 'Jurisdiction Information';
+            console.log('page title', this.pages.getPageTitle());
+            this.$scope.pageTitle = this.pages.getPageTitle();
             //Load list of jurisdictions for drop down list
             this.jurisdictions.getJurisdictions().then(response => {
                 this.names = response.data;
@@ -202,7 +211,7 @@
 
         reviewSection1() {
             //Set page title
-            this.$scope.pageTitle = 'Primary Contact';
+            this.pages.setPageTitle('Primary Contact');
             this.jurisdiction.jurisdictionId = this.jurisdiction._id;
             console.log(this.jurisdiction);
             var id = this.jurisdiction._id;
@@ -234,7 +243,7 @@
             console.log(this.$scope.contact1Exists);
             this.$scope.contactId = uuid.v1();
             //Set page title
-            this.$scope.pageTitle = 'StreetSaver Contact';
+            this.pages.setPageTitle('Street Saver Contact');
             if (this.$scope.contact1Exists) {
                 this.$state.go('application.form-2b');
             } else if (!this.$scope.contact1Exists) {
@@ -278,7 +287,7 @@
 
         reviewSection2b() {
             //Set page title
-            this.$scope.pageTitle = 'General Information';
+            this.pages.setPageTitle('General Information');
             console.log(this.contact2);
             console.log(this.$scope.contact2Exists);
             if (this.$scope.contact2Exists) {
@@ -334,7 +343,7 @@
 
         reviewSection3() {
             //Set page title
-            this.$scope.pageTitle = 'Project Types';
+            this.pages.setPageTitle('Project Information');
             var appId = this.applications.getId();
             var appData = this.application;
             this.applications.update(appId, appData).then(info => {
@@ -350,7 +359,7 @@
 
         reviewSection4() {
             //Set page title
-            this.$scope.pageTitle = 'Project Summary';
+            this.pages.setPageTitle('Project Cost Summary');
             var appId = this.applications.getId();
             var appData = this.application;
             this.applications.update(appId, appData).then(info => {
@@ -364,7 +373,7 @@
 
         reviewSection5() {
             //Set page title
-            this.$scope.pageTitle = 'Signature';
+            this.pages.setPageTitle('Signature');
             this.$state.go('application.form-6');
         }
 

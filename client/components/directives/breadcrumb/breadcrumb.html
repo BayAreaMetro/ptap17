@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <ol class="breadcrumb">
-                    <li ng-repeat="link in breadcrumbs"><a class="btn radius btn-white btn-sm" ui-sref="{{ link.link }}" ng-click="page.title = '{{ link.title }}'">{{ link.name }}</a></li>
+                    <li ng-repeat="link in breadcrumbs"><a class="btn radius btn-white btn-sm" ui-sref="{{ link.link }}" ng-click="setTitle(link.title)">{{ link.name }}</a></li>
                 </ol>
             </div>
         </div>

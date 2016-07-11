@@ -12,31 +12,41 @@ angular.module('ptapApp.breadCrumb.directive', [])
                 title: '='
             },
             //Controller
-            controller: function($scope, $state) {
+            controller: function($scope, $state, pages) {
                 //Set links and names for breadcrumbs
                 $scope.breadcrumbs = [{
                     link: 'application',
                     name: '1. Jurisdiction',
-                    title: 'Testing'
+                    title: 'Jurisdiction Information'
                 }, {
                     link: 'application.form-2',
-                    name: '2. Contact'
+                    name: '2. Contact',
+                     title: 'Primary Contact'
                 }, {
                     link: 'application.form-2b',
-                    name: '2b. Contact'
+                    name: '2b. Contact',
+                     title: 'Street Saver Contact'
                 }, {
                     link: 'application.form-3',
-                    name: '3. General'
+                    name: '3. General',
+                     title: 'General Information'
                 }, {
                     link: 'application.form-4',
-                    name: '4. Types'
+                    name: '4. Types',
+                     title: 'Project Information'
                 }, {
                     link: 'application.form-5',
-                    name: '5. Summary'
+                    name: '5. Summary',
+                     title: 'Summary'
                 }, {
                     link: 'application.form-6',
-                    name: '6. Signature'
+                    name: '6. Signature',
+                     title: 'Signature'
                 }];
+
+                $scope.setTitle = function(title) {
+                    pages.setPageTitle(title);
+                };
             }
         };
     });
