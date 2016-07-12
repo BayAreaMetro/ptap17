@@ -1,18 +1,19 @@
- <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="footer-content" style="text-align:left;">
-                        <div class="logo-footer"><img alt="" src="images/logo_red_footer.png" id="logo-footer"></div>
-                        <h2>Get in touch</h2>
-                        <p>If you have any questions about the application process, or feedback regarding this web application, please feel free to contact us using our Contact form.</p>
-                        <p>Bay Area Metro Center <br>
-                        375 Beale Street, Suite 800 <br>
-                        San Francisco, CA <br>
-                        94105 <br>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="footer-content" style="text-align:left;">
+                    <div class="logo-footer"><img alt="" src="images/logo_red_footer.png" id="logo-footer"></div>
+                    <h2>Get in touch</h2>
+                    <p>If you have any questions about the application process, or feedback regarding this web application, please feel free to contact us.</p>
+                    <p>Bay Area Metro Center
+                        <br> 375 Beale Street, Suite 800
+                        <br> San Francisco, CA
+                        <br> 94105
+                        <br>
                         <a href="http://www.mtc.ca.gov">www.mtc.ca.gov</a>
-                        </p>
-                        <!-- <div class="row">
+                    </p>
+                    <!-- <div class="row">
                             <div class="col-md-6">
                                 <ul class="list-icons">
                                     <li><i class="fa fa-map-marker pr-10"></i> One infinity loop, 54100</li>
@@ -31,72 +32,72 @@
                             </div>
                         </div>
                         <a class="link" href="page-about.html"><span>Read More</span></a> -->
-                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="footer-content">
-                        <h2>Contact Us</h2>
-                        <div id="MessageSent2" class="alert alert-success hidden">
-                            We have received your message, we will contact you very soon.
-                        </div>
-                        <div id="MessageNotSent2" class="alert alert-danger hidden">
-                            Oops! Something went wrong please refresh the page and try again.
-                        </div>
-                        <form id="footer-form" role="form" novalidate="novalidate">
-                            <div class="form-group has-feedback">
-                                <label for="name2" class="sr-only">Name</label>
-                                <input type="text" name="name2" placeholder="Name" id="name2" class="form-control">
-                                <i class="fa fa-user form-control-feedback"></i>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="email2" class="sr-only">Email address</label>
-                                <input type="email" name="email2" placeholder="Enter email" id="email2" class="form-control">
-                                <i class="fa fa-envelope form-control-feedback"></i>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="message2" class="sr-only">Message</label>
-                                <textarea name="message2" placeholder="Message" id="message2" rows="4" class="form-control"></textarea>
-                                <i class="fa fa-pencil form-control-feedback"></i>
-                            </div>
-                            <input type="submit" class="submit-button btn btn-default" value="Send">
-                        </form>
+            </div>
+            <div class="col-sm-6">
+                <div class="footer-content">
+                    <h2>Contact Us</h2>
+                    <div id="MessageSent2" class="alert alert-success" ng-show="notification === 'success'">
+                        We have received your message, we will contact you very soon.
                     </div>
+                    <div id="MessageNotSent2" class="alert alert-danger" ng-show="notification === 'error'">
+                        Oops! Something went wrong please refresh the page and try again.
+                    </div>
+                    <form id="footer-form" role="form" novalidate="novalidate">
+                        <div class="form-group has-feedback">
+                            <label for="name2" class="sr-only">Name</label>
+                            <input type="text" name="name2" placeholder="Name" id="name2" class="form-control" ng-model="email.from_name">
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="email2" class="sr-only">Email address</label>
+                            <input type="email" name="email2" placeholder="Enter email" id="email2" class="form-control" ng-model="email.from_address">
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="message2" class="sr-only">Message</label>
+                            <textarea name="message2" placeholder="Message" id="message2" rows="4" class="form-control" ng-model="email.message"></textarea>
+                            <i class="fa fa-pencil form-control-feedback"></i>
+                        </div>
+                        <input type="submit" class="submit-button btn btn-default" value="Send" ng-click="sendMail()">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- .footer end -->
-    <!-- .subfooter start -->
-    <!-- ================ -->
-    <div class="subfooter">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <p>Copyright &copy; 2016 Metropolitan Transportation Commission. Developed by <a href="http://gis.mtc.ca.gov" target="_blank">MTCGIS</a>. All Rights Reserved</p>
-                </div>
-                <div class="col-md-4">
-                    <nav role="navigation" class="navbar navbar-default">
-                        <!-- Toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button data-target="#navbar-collapse-2" data-toggle="collapse" class="navbar-toggle" type="button">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div id="navbar-collapse-2" class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="page-about.html">View Application</a></li>
-                                <li><a href="blog-right-sidebar.html">Manage Acocunt</a></li>
-                              <!--   <li><a href="portfolio-3col.html">Portfolio</a></li>
+</div>
+<!-- .footer end -->
+<!-- .subfooter start -->
+<!-- ================ -->
+<div class="subfooter">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <p>Copyright &copy; 2016 Metropolitan Transportation Commission. Developed by <a href="http://gis.mtc.ca.gov" target="_blank">MTCGIS</a>. All Rights Reserved</p>
+            </div>
+            <div class="col-md-4">
+                <nav role="navigation" class="navbar navbar-default">
+                    <!-- Toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button data-target="#navbar-collapse-2" data-toggle="collapse" class="navbar-toggle" type="button">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div id="navbar-collapse-2" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a ui-sref="application">View Application</a></li>
+                            <li><a ui-sref="myaccount">Manage Acocunt</a></li>
+                            <!--   <li><a href="portfolio-3col.html">Portfolio</a></li>
                                 <li><a href="page-contact.html">Contact</a></li> -->
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
+                        </ul>
+                    </div>
+                </nav>
             </div>
         </div>
     </div>
-    <!-- .subfooter end -->
+</div>
+<!-- .subfooter end -->

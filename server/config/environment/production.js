@@ -3,25 +3,29 @@
 // Production specific configuration
 // =================================
 module.exports = {
-  // Server IP
-  ip:     process.env.OPENSHIFT_NODEJS_IP ||
-          process.env.IP ||
-          undefined,
+    // Server IP
+    ip: process.env.OPENSHIFT_NODEJS_IP ||
+        process.env.IP ||
+        undefined,
 
-  // Server port
-  port:   process.env.OPENSHIFT_NODEJS_PORT ||
-          process.env.PORT ||
-          8080,
+    // Server port
+    port: process.env.OPENSHIFT_NODEJS_PORT ||
+        process.env.PORT ||
+        8080,
 
-  sequelize: {
-    uri:  process.env.SEQUELIZE_URI,
-    options: {
-      logging: false,
-      dialect: 'mssql',
-      // storage: 'dist.sqlite',
-      define: {
-        timestamps: true
-      }
+    sequelize: {
+        uri: process.env.SEQUELIZE_URI,
+        options: {
+            logging: false,
+            dialect: 'mssql',
+            // storage: 'dist.sqlite',
+            define: {
+                timestamps: true
+            }
+        }
+    },
+    sendgrid: {
+        user: process.env.SENDGRID_USER,
+        pwd: process.env.SENDGRID_PWD
     }
-  }
 };

@@ -12,6 +12,13 @@ angular.module('ptapApp')
         };
 
 
+        //Create new contact
+        this.update = function(id, contact) {
+            console.log(contact);
+            return $http.post(urlBase + '/' + id, contact);
+        };
+
+
         //Set current contact
         this.setCurrent = function(contact) {
             currentContact = contact;
@@ -23,7 +30,7 @@ angular.module('ptapApp')
             return currentContact;
         };
 
-         //Get current contact
+        //Get current contact
         this.getOne = function(id) {
             return $http.get(urlBase + '/' + id);
         };

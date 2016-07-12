@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ptapApp')
+angular.module('ptapApp.pageHeading.directive', [])
   .directive('pageHeading', function () {
     return {
       templateUrl: 'components/directives/pageHeading/pageHeading.html',

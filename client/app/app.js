@@ -12,7 +12,10 @@ angular.module('ptapApp', [
   'validation.match',
   'ngAnimate',
   'ptapApp.breadCrumb.directive',
-  'ptapApp.pages.service'
+  'ptapApp.pages.service',
+  'ptapApp.pageHeading.directive',
+  'ptapApp.footer.directive',
+  'ptapApp.navbar.directive'
   
 ])
   .config(function($urlRouterProvider, $locationProvider) {

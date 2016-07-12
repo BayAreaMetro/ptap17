@@ -94,12 +94,10 @@ export function create(req, res) {
 
 // Updates an existing Contact in the DB
 export function update(req, res) {
-    if (req.body._id) {
-        delete req.body._id;
-    }
+    
     return Contact.find({
             where: {
-                _id: req.params.id
+                contactId: req.params.id
             }
         })
         .then(handleEntityNotFound(res))
