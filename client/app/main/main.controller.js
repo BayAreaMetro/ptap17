@@ -4,13 +4,17 @@
 
     class MainController {
 
-        constructor($http, Auth, applications) {
+        constructor($http, Auth, applications, $scope, pages) {
             this.$http = $http;
             this.awesomeThings = [];
             this.isLoggedIn = Auth.isLoggedIn;
             this.isAdmin = Auth.isAdmin;
             this.getCurrentUser = Auth.getCurrentUser;
             this.applications = applications;
+
+            $scope.setPageTitle = function(){
+                pages.setPageTitle('Jurisdiction Information');
+            };
         }
 
         $onInit() {
