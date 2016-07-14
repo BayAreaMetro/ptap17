@@ -1,8 +1,17 @@
 <!-- section start -->
 <div class="section gray-bg">
     <div class="container">
+        <div role="alert" class="alert alert-danger alert-dismissible" ng-show="!appCtrl.form2bIsValid">
+            <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            Please fix the errors on the page:
+            <!-- <ul class="">
+                <li><a class="alert-link" href="features-icons-fontawesome.html" target="_blank">Font Awesome Icons</a></li>
+                <li><a class="alert-link" href="features-icons-fontello.html" target="_blank">Fontello Icons</a></li>
+                <li><a class="alert-link" href="features-icons-glyphicons.html" target="_blank">Glyphicons Icons</a></li>
+            </ul> -->
+        </div>
         <!-- <h2>Streetsaver Contact</h2> -->
-        <form role="form">
+        <form role="form" name="form2b">
             <div class="row" ng-show="!contact2Exists">
                 <div class="checkbox">
                     <label>
@@ -15,7 +24,7 @@
                     <div class="form-group has-feedback">
                         <label class="control-label">Title</label>
                         <select class="form-control" ng-model="appCtrl.contact2.title">
-                           <option>Mr.</option>
+                            <option>Mr.</option>
                             <option>Mrs.</option>
                             <option>Ms.</option>
                         </select>
@@ -26,53 +35,60 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">First Name</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.contact2.firstName">
+                        <input type="text" class="form-control" ng-model="appCtrl.contact2.firstName" name="firstnameSS" id="firstnameSS" required>
                         <i class="fa fa-lock form-control-feedback"></i>
                     </div>
+                    <p class="text-danger" ng-show="form2b.firstnameSS.$error.required && appCtrl.submitted2b">A first name is required</p>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Last Name</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.contact2.lastName">
+                        <input type="text" class="form-control" ng-model="appCtrl.contact2.lastName" name="lastnameSS" id="lastnameSS" required>
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
+                    <p class="text-danger" ng-show="form2b.lastnameSS.$error.required && appCtrl.submitted2b">A last name is required</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Job Title</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.contact2.position">
+                        <input type="text" class="form-control" ng-model="appCtrl.contact2.position" name="jobTitleSS" id="jobTitleSS" required>
                         <i class="fa fa-user form-control-feedback"></i>
                     </div>
+                    <p class="text-danger" ng-show="form2b.jobTitleSS.$error.required && appCtrl.submitted2b">A job title is required</p>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Phone</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.contact2.phone">
+                        <input type="text" class="form-control" ng-model="appCtrl.contact2.phone" name="contact2PhoneSS" id="contact2PhoneSS" ui-mask="(999) 999-9999" required>
                         <i class="fa fa-lock form-control-feedback"></i>
                     </div>
+                    <p class="text-danger" ng-show="form2b.contact2PhoneSS.$error.required && appCtrl.submitted2b">A phone number is required</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Email Address</label>
-                        <input type="email" class="form-control" ng-model="appCtrl.contact2.email">
+                        <input type="email" class="form-control" ng-model="appCtrl.contact2.email" name="contact2EmailSS" id="contact2EmailSS" required>
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
+                    <p class="text-danger" ng-show="form2b.contact2EmailSS.$error.required && appCtrl.submitted2b">An email address is required</p>
+                    <p class="text-danger" ng-show="form2b.contact2EmailSS.$error.email && appCtrl.submitted2b">Please enter a valid email address</p>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Confirm Email Address</label>
-                        <input type="email" class="form-control" ng-model="appCtrl.contact2.emailConfirm">
+                        <input type="email" class="form-control" ng-model="appCtrl.contact2.emailConfirm" name="emailConfirmSS" id="emailConfirmSS"  match="appCtrl.contact2.email">
                         <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
+                    <p class="text-danger" ng-show="form2b.emailConfirmSS.$error.match && appCtrl.submitted2b">Please make sure email addresses match</p>
+                    <p class="text-danger" ng-show="form2b.emailConfirmSS.$error.required && appCtrl.submitted2b">Please confirm email address</p>
                 </div>
             </div>
-           
             <button type="submit" class="btn btn-default" ng-click="appCtrl.save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
-            <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection2b()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
+            <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection2b(form2b)"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
         </form>
     </div>
 </div>

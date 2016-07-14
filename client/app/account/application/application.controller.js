@@ -12,6 +12,10 @@
             this.applicationId;
             this.application = {};
 
+            this.formIsValid = true;
+            this.form2bIsValid = true;
+            this.form6IsValid = true;
+
             //Set state change watch
             $rootScope.$on('$stateChangeStart',
                 function(event, toState, toParams, fromState, fromParams) {
@@ -206,7 +210,10 @@
             });
         }
 
-        reviewSection1() {
+        reviewSection1(form) {
+
+            this.submitted = true;
+
             //Set page title
             this.pages.setPageTitle('Primary Contact');
             this.jurisdiction.jurisdictionId = this.jurisdiction._id;
@@ -235,40 +242,47 @@
 
         }
 
-        reviewSection2() {
+        reviewSection2(form) {
+            this.submitted = true;
+
             console.log(this.contact1);
             console.log(this.$scope.contact1Exists);
             this.$scope.contactId = uuid.v1();
             //Set page title
             this.pages.setPageTitle('Street Saver Contact');
-            if (this.$scope.contact1Exists) {
-                this.contacts.update(this.contact1.contactId, this.contact1).then(response => {
-                    console.log(response);
-                    this.$state.go('application.form-2b');
-                }).catch(function(error) {
-                    console.log(error);
-                });
-
-            } else if (!this.$scope.contact1Exists) {
-                this.contact1.contactId = this.$scope.contactId;
-                this.contacts.create(this.contact1).then(response => {
-                    console.log(response);
-                    this.contacts.setCurrent(response.data);
-                    var appId = this.applications.getId();
-                    var appData = {
-                        primaryContactId: this.$scope.contactId
-                    };
-                    console.log(appData);
-                    this.applications.update(appId, appData).then(info => {
-                        console.log(info);
+            if (form.$valid) {
+                this.formIsValid = true;
+                if (this.$scope.contact1Exists) {
+                    this.contacts.update(this.contact1.contactId, this.contact1).then(response => {
+                        console.log(response);
                         this.$state.go('application.form-2b');
                     }).catch(function(error) {
                         console.log(error);
                     });
-                }).catch(function(error) {
-                    console.log(error);
-                    throw error;
-                });
+
+                } else if (!this.$scope.contact1Exists) {
+                    this.contact1.contactId = this.$scope.contactId;
+                    this.contacts.create(this.contact1).then(response => {
+                        console.log(response);
+                        this.contacts.setCurrent(response.data);
+                        var appId = this.applications.getId();
+                        var appData = {
+                            primaryContactId: this.$scope.contactId
+                        };
+                        console.log(appData);
+                        this.applications.update(appId, appData).then(info => {
+                            console.log(info);
+                            this.$state.go('application.form-2b');
+                        }).catch(function(error) {
+                            console.log(error);
+                        });
+                    }).catch(function(error) {
+                        console.log(error);
+                        throw error;
+                    });
+                }
+            } else {
+                this.formIsValid = false;
             }
 
         }
@@ -288,64 +302,74 @@
 
         }
 
-        reviewSection2b() {
+        reviewSection2b(form2b) {
+            this.submitted2b = true;
+            console.log(this.submitted2b);
+            console.log(form2b.$valid);
             //Set page title
             this.pages.setPageTitle('General Information');
             console.log(this.contact2);
             console.log(this.$scope.contact2Exists);
-            if (this.$scope.contact2Exists) {
-                this.contacts.update(this.contact2.contactId, this.contact2).then(response => {
-                    console.log(response);
-                    this.$state.go('application.form-3');
-                }).catch(function(error) {
-                    console.log(error);
-                });
 
-            } else if (!this.$scope.contact2Exists) {
-                var contact2Id, appId;
-                var appData = {};
-
-
-                if (this.contact2.check) {
-                    if (this.application.primaryContactId) {
-                        contact2Id = this.application.primaryContactId;
-                    } else {
-                        contact2Id = this.$scope.contactId;
-                    }
-                    appId = this.applications.getId();
-                    appData = {
-                        streetSaverContactId: contact2Id
-                    };
-                    this.applications.update(appId, appData).then(info => {
-                        console.log(info);
+            if (form2b.$valid) {
+                this.form2bIsValid = true;
+                if (this.$scope.contact2Exists) {
+                    this.contacts.update(this.contact2.contactId, this.contact2).then(response => {
+                        console.log(response);
                         this.$state.go('application.form-3');
                     }).catch(function(error) {
                         console.log(error);
                     });
-                } else {
-                    this.$scope.contact2Id = uuid.v1();
-                    appId = this.applications.getId();
 
-                    this.contact2.contactId = this.$scope.contact2Id;
-                    this.contacts.create(this.contact2).then(response => {
-                        console.log(response);
+                } else if (!this.$scope.contact2Exists) {
+                    var contact2Id, appId;
+                    var appData = {};
+
+
+                    if (this.contact2.check) {
+                        if (this.application.primaryContactId) {
+                            contact2Id = this.application.primaryContactId;
+                        } else {
+                            contact2Id = this.$scope.contactId;
+                        }
                         appId = this.applications.getId();
                         appData = {
-                            streetSaverContactId: this.$scope.contact2Id
+                            streetSaverContactId: contact2Id
                         };
-                        console.log(appData);
                         this.applications.update(appId, appData).then(info => {
                             console.log(info);
                             this.$state.go('application.form-3');
                         }).catch(function(error) {
                             console.log(error);
                         });
-                    }).catch(function(error) {
-                        console.log(error);
-                        throw error;
-                    });
+                    } else {
+                        this.$scope.contact2Id = uuid.v1();
+                        appId = this.applications.getId();
+
+                        this.contact2.contactId = this.$scope.contact2Id;
+                        this.contacts.create(this.contact2).then(response => {
+                            console.log(response);
+                            appId = this.applications.getId();
+                            appData = {
+                                streetSaverContactId: this.$scope.contact2Id
+                            };
+                            console.log(appData);
+                            this.applications.update(appId, appData).then(info => {
+                                console.log(info);
+                                this.$state.go('application.form-3');
+                            }).catch(function(error) {
+                                console.log(error);
+                            });
+                        }).catch(function(error) {
+                            console.log(error);
+                            throw error;
+                        });
+                    }
                 }
+            } else {
+                this.form2bIsValid = false;
             }
+
 
 
         }
@@ -386,17 +410,23 @@
             this.$state.go('application.form-6');
         }
 
-        submitApplication() {
-            this.$scope.pageTitle = 'Application Complete';
-            var appId = this.applications.getId();
-            var appData = this.application;
-            this.applications.update(appId, appData).then(info => {
-                console.log(info);
-                this.$state.go('application.success');
-            }).catch(function(error) {
-                console.log(error);
-            });
+        submitApplication(form6) {
+            this.submitted6 = true;
 
+            if (form6.$valid) {
+                this.form6IsValid = true;
+                this.$scope.pageTitle = 'Application Complete';
+                var appId = this.applications.getId();
+                var appData = this.application;
+                this.applications.update(appId, appData).then(info => {
+                    console.log(info);
+                    this.$state.go('application.success');
+                }).catch(function(error) {
+                    console.log(error);
+                });
+            } else {
+                this.form6IsValid = false;
+            }
         }
 
         updateJurisdiction() {

@@ -1,33 +1,40 @@
 <!-- section start -->
 <div class="section gray-bg">
     <div class="container">
+        <div role="alert" class="alert alert-danger alert-dismissible" ng-show="!appCtrl.form6IsValid">
+            <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            Please fix the errors on the page:
+        </div>
         <!-- <h2>Signature</h2> -->
         <p class="lead">This application must be submitted by the jurisdiction's Public Works Director or an authorized representative. The person signing this page authorizes the juridiction to apply for the Pavement Management Technical Assistance Program, Round 17.</p>
-        <form role="form">
+        <form role="form" name="form6">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Full Name</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.publicWorksDirectorName">
+                        <input type="text" class="form-control" ng-model="appCtrl.application.publicWorksDirectorName" name="publicWorksName" id="publicWorksName" required>
                         <i class="fa fa-user form-control-feedback"></i>
                     </div>
+                    <p class="text-danger" ng-show="form6.publicWorksName.$error.required && appCtrl.submitted6">A full name is required</p>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Title</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.publicWorksDirectorTitle">
-                        <i class="fa fa-lock form-control-feedback"></i>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.publicWorksDirectorTitle" name="publicWorksTitle" id="publicWorksTitle" required>
+                        <i class="fa fa-user form-control-feedback"></i>
                     </div>
+                    <p class="text-danger" ng-show="form6.publicWorksTitle.$error.required && appCtrl.submitted6">A job title is required</p>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Contact Number</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.publicWorksDirectorNumber">
-                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.publicWorksDirectorNumber" name="publicWorksNumber" id="publicWorksNumber" ui-mask="(999) 999-9999" required>
+                        <i class="fa fa-user form-control-feedback"></i>
                     </div>
+                    <p class="text-danger" ng-show="form6.publicWorksNumber.$error.required && appCtrl.submitted6">A phone number is required</p>
                 </div>
             </div>
-            <button type="submit" class="btn btn-default" ng-click="appCtrl.submitApplication()">Submit Application</button>
+            <button type="submit" class="btn btn-default" ng-click="appCtrl.submitApplication(form6)">Submit Application</button>
         </form>
     </div>
 </div>
