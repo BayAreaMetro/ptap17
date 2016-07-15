@@ -100,6 +100,8 @@ export function destroy(req, res) {
  */
 export function changePassword(req, res, next) {
     var userId = req.user._id;
+    console.log(userId);
+    console.log(req.body);
     var oldPass = String(req.body.oldPassword);
     var newPass = String(req.body.newPassword);
 
@@ -109,16 +111,44 @@ export function changePassword(req, res, next) {
             }
         })
         .then(user => {
-            if (user.authenticate(oldPass)) {
-                user.password = newPass;
-                return user.save()
-                    .then(() => {
-                        res.status(204).end();
-                    })
-                    .catch(validationError(res));
-            } else {
-                return res.status(403).end();
+
+            user.password = req.body.update;
+            return user.save()
+                .then(() => {
+                    res.status(204).end();
+                })
+                .catch(validationError(res));
+
+        });
+}
+
+/**
+ * Change a users account info
+ */
+export function changeMyInfo(req, res, next) {
+    var userId = req.user._id;
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var phone = req.body.phone;
+    var email = req.body.email;
+
+    return User.find({
+            where: {
+                _id: userId
             }
+        })
+        .then(user => {
+
+            user.firstname = firstname;
+            user.lastname = lastname;
+            user.phone = phone;
+            user.email = email;
+            return user.save()
+                .then(() => {
+                    res.status(204).end();
+                })
+                .catch(validationError(res));
+
         });
 }
 

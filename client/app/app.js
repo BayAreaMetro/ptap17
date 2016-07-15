@@ -17,7 +17,8 @@ angular.module('ptapApp', [
         'ptapApp.pageHeading.directive',
         'ptapApp.footer.directive',
         'ptapApp.navbar.directive',
-        'ptapApp.phoneNumber.filter'
+        'ptapApp.phoneNumber.filter',
+        'ptapApp.myAccount.service'
 
     ])
     .config(function($urlRouterProvider, $locationProvider) {

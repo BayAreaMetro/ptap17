@@ -79,7 +79,7 @@
                         <a href="index.html"><img id="logo" src="assets/images/logo.png" alt="iDea"></a>
                     </div>
                     <!-- name-and-slogan -->
-                   <!--  <div class="site-slogan">
+                    <!--  <div class="site-slogan">
                         Clean &amp; Powerful Bootstrap Theme
                     </div> -->
                 </div>
@@ -107,17 +107,30 @@
                                 </div>
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                                    <!-- Single button -->
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active">
                                             <a href="index.html">Home</a>
                                         </li>
                                         <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Create an Account</a></li>
                                         <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
-                                        <li ng-show="nav.isLoggedIn()">
-                                            <p class="navbar-text">Hello {{ nav.getCurrentUser().firstname }} {{ nav.getCurrentUser().lastname }}</p>
+                                        <li ng-show="nav.isLoggedIn()" uib-dropdown>
+
+                                            <a href="index.html" uib-dropdown-toggle> <i class="fa fa-user"></i>&nbsp;  {{ nav.getCurrentUser().firstname }} {{ nav.getCurrentUser().lastname }}</a>
+                                            <ul  uib-dropdown-menu role="menu">
+                                                <li role="menuitem"><a ui-sref="myaccount">My Account</a></li>
+                                                <li role="menuitem"><a ui-sref="logout">Logout</a></li>
+                                              <!--   <li role="menuitem"><a href="#">Something else here</a></li>
+                                                <li class="divider"></li>
+                                                <li role="menuitem"><a href="#">Separated link</a></li> -->
+                                            </ul>
                                         </li>
-                                        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-                                        <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+
+                                       <!--  <li ng-show="nav.isLoggedIn()">
+                                            <p class="navbar-text">Hello {{ nav.getCurrentUser().firstname }} {{ nav.getCurrentUser().lastname }}</p>
+                                        </li> -->
+                                       <!--  <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+                                        <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li> -->
                                     </ul>
                                 </div>
                             </div>
