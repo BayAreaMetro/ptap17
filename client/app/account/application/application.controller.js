@@ -418,6 +418,7 @@
                 this.$scope.pageTitle = 'Application Complete';
                 var appId = this.applications.getId();
                 var appData = this.application;
+                appData.submitted = 'Yes';
                 this.applications.update(appId, appData).then(info => {
                     console.log(info);
                     this.$state.go('application.success');

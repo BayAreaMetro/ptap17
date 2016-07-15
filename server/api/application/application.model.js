@@ -72,6 +72,7 @@ export default function(sequelize, DataTypes) {
         publicWorksDirectorName: DataTypes.STRING,
         publicWorksDirectorTitle: DataTypes.STRING,
         publicWorksDirectorNumber: DataTypes.STRING,
+        submitted: DataTypes.STRING,
         applicationdate: DataTypes.STRING
     });
 }
