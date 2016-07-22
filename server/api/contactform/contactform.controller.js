@@ -12,7 +12,7 @@
 import _ from 'lodash';
 import { Contactform } from '../../sqldb';
 import config from '../../config/environment';
-var sendgrid = require('sendgrid')(config.sendgrid.user, config.sendgrid.pwd);
+var sendgrid = require('sendgrid')(process.env.SENDGRID_USER, process.env.PWD);
 
 // console.log(sendgrid);
 
