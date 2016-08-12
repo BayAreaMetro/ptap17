@@ -11,7 +11,7 @@
             this.contacts = contacts;
             this.applicationId;
             this.application = {};
-            this.pageLoading = true;
+
 
             this.formIsValid = true;
             this.form2bIsValid = true;
@@ -62,6 +62,7 @@
         }
 
         $onInit() {
+            this.pageLoading = true;
             //Set page title
             this.$scope.pageTitle = this.pages.getPageTitle();
             //Load list of jurisdictions for drop down list
@@ -78,6 +79,9 @@
             }
             this.applications.getCurrent(this.applicationId)
                 .then(response => {
+                    if (!response.data.jurisdictionId) {
+                        this.pageLoading = false;
+                    }
                     this.application = response.data;
                     console.log(this.application.pdpAdditionalFunds);
                     this.application.pdpAnticipatedConstructionDate = new Date(response.data.pdpAnticipatedConstructionDate);
@@ -102,8 +106,9 @@
 
                 }).then(response => {
                     // console.log(response.data);
+
                     this.jurisdiction = response.data;
-                    
+
                     //Set dates
                     console.log(this.application.lastMajorInspection);
                     if (!this.application.lastMajorInspection) {
@@ -147,6 +152,8 @@
                     this.application.pdpTotalProjectCost = _.toNumber(pdpCosts.local) + _.toNumber(this.application.pdpAdditionalFunds);
                     // this.application.pdpAdditionalFunds = this.application.networkAdditionalFunds;
 
+                    this.pageLoading = false;
+
                     //Find primary contact
                     return this.contacts.getOne(this.contact1Id);
                 }).then(response => {
@@ -157,7 +164,7 @@
                 }).then(response => {
                     // console.log(response.data);
                     this.contact2 = response.data;
-                    this.pageLoading = false;
+
                 });
 
             /**
