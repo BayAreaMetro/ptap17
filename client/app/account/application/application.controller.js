@@ -11,6 +11,7 @@
             this.contacts = contacts;
             this.applicationId;
             this.application = {};
+            this.pageLoading = true;
 
             this.formIsValid = true;
             this.form2bIsValid = true;
@@ -78,7 +79,7 @@
             this.applications.getCurrent(this.applicationId)
                 .then(response => {
                     this.application = response.data;
-
+                    console.log(this.application.pdpAdditionalFunds);
                     this.application.pdpAnticipatedConstructionDate = new Date(response.data.pdpAnticipatedConstructionDate);
 
                     // console.log(this.application);
@@ -102,6 +103,7 @@
                 }).then(response => {
                     // console.log(response.data);
                     this.jurisdiction = response.data;
+                    
                     //Set dates
                     console.log(this.application.lastMajorInspection);
                     if (!this.application.lastMajorInspection) {
@@ -125,23 +127,24 @@
 
                     //Calculate Cost Values
                     var newCostValues = this.$scope.calculateCosts(this.application.networkMilesForSurvey);
-                    // console.log(newCostValues);
 
+                    // Update PMS Summary Values
                     this.application.pmsGrantAmount = newCostValues.grant;
                     this.application.pmsLocalContribution = newCostValues.local;
                     this.application.pmsTotalProjectCost = newCostValues.total;
                     this.application.pmsAdditionalFunds = this.application.networkAdditionalFunds;
 
-                    // this.application.npamEstimatedcost = newCostValues.grant;
-
-                    this.application.npamLocalContribution = this.application.npamEstimatedcost * 0.2;
-                    this.application.npamGrantAmount = newCostValues.grant;
-                    this.application.npamTotalProjectCost = newCostValues.total;
+                    // Update Design Summary Values
+                    var npamCosts = this.$scope.calculateDesignCosts(this.application.npamEstimatedcost);
+                    this.application.npamLocalContribution = npamCosts.local;
+                    this.application.npamGrantAmount = npamCosts.grant;
+                    this.application.npamTotalProjectCost = _.toNumber(npamCosts.local) + _.toNumber(this.application.npamAdditionalFunds);
                     // this.application.npamAdditionalFunds = this.application.networkAdditionalFunds;
-                    // this.application.pdpEstimatedCost = newCostValues.grant;
-                    // this.application.pdpGrantAmount = newCostValues.grant;
-                    // this.application.pdpLocalContribution = newCostValues.local;
-                    // this.application.pdpTotalProjectCost = newCostValues.total;
+
+                    var pdpCosts = this.$scope.calculateDesignCosts(this.application.pdpEstimatedCost);
+                    this.application.pdpGrantAmount = pdpCosts.grant;
+                    this.application.pdpLocalContribution = pdpCosts.local;
+                    this.application.pdpTotalProjectCost = _.toNumber(pdpCosts.local) + _.toNumber(this.application.pdpAdditionalFunds);
                     // this.application.pdpAdditionalFunds = this.application.networkAdditionalFunds;
 
                     //Find primary contact
@@ -154,6 +157,7 @@
                 }).then(response => {
                     // console.log(response.data);
                     this.contact2 = response.data;
+                    this.pageLoading = false;
                 });
 
             /**
@@ -210,6 +214,34 @@
                 };
 
                 return costValues;
+            };
+
+            this.$scope.calculateDesignCosts = function(amount) {
+                var designCosts = {};
+                var totalCost, localCost, grantAmount;
+
+                //Grant amount  = 80% of requested amount
+                grantAmount = amount * 0.8;
+                if (grantAmount >= 80000) {
+                    grantAmount = 80000;
+                } else {
+                    grantAmount = grantAmount;
+                }
+                //Cost to jurisdiction = 20% of request amount
+                localCost = amount * 0.2;
+                if (localCost >= 20000) {
+                    localCost = 20000;
+                } else {
+                    localCost = localCost;
+                }
+                designCosts = {
+                    grant: grantAmount,
+                    local: localCost,
+
+                };
+
+
+                return designCosts;
             };
 
         }
@@ -397,6 +429,7 @@
             };
             this.applications.update(appId, appData).then(info => {
                 console.log(info);
+                this.application = info.data;
                 this.$state.go('application.form-4');
             }).catch(function(error) {
                 console.log(error);
@@ -429,6 +462,7 @@
                 other: this.application.other,
                 otherDescription: this.application.otherDescription,
                 npamEstimatedcost: this.application.npamEstimatedcost,
+                npamAdditionalFunds: this.application.npamAdditionalFunds,
                 npamProjectdescription: this.application.npamProjectdescription,
                 streetLights: this.application.streetLights,
                 trafficSignals: this.application.trafficSignals,
@@ -442,6 +476,7 @@
                 pdpConstructionFullyFunded: this.application.pdpConstructionFullyFunded,
                 pdpFederalAidEligible: this.application.pdpFederalAidEligible,
                 pdpEstimatedCost: this.application.pdpEstimatedCost,
+                pdpAdditionalFunds: this.application.pdpAdditionalFunds,
                 pdpAnticipatedConstructionDate: this.application.pdpAnticipatedConstructionDate,
                 pdpProjectDescription: this.application.pdpProjectDescription,
 
@@ -449,6 +484,7 @@
 
             this.applications.update(appId, appData).then(info => {
                 console.log(info);
+                this.application = info.data;
                 this.$state.go('application.form-5');
             }).catch(function(error) {
                 console.log(error);
@@ -475,6 +511,7 @@
             };
             this.applications.update(appId, appData).then(info => {
                 console.log(info);
+                this.application = info.data;
                 this.pages.setPageTitle('Signature');
                 this.$state.go('application.form-6');
             }).catch(function(error) {
