@@ -12,7 +12,7 @@
 import _ from 'lodash';
 import { Contactform } from '../../sqldb';
 import config from '../../config/environment';
-var sendgrid = require('sendgrid')(process.env.SENDGRID_USER, process.env.SENDGRID_PWD);
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 
 // console.log(sendgrid);
 
@@ -85,19 +85,31 @@ export function show(req, res) {
 
 // Creates a new Contactform in the DB
 export function create(req, res) {
-    var email = new sendgrid.Email();
-    console.log(req.body);
-    email.addTo("mziyambi@mtc.ca.gov");
-    email.setFrom(req.body.from_address);
-    email.setSubject("P-TAP Contact Form");
-    email.setHtml(req.body.message);
 
-    sendgrid.send(email, function(err, json) {
-        if (err) {
-            console.error(err);
-        }
-        res.json(json);
+    var helper = require('sendgrid').mail
+    var from_email = new helper.Email(req.body.from_address, req.body.from_name)
+    var to_email = new helper.Email('chohorst@mtc.ca.gov')
+    var subject = 'P-TAP Contact Form'
+    var content = new helper.Content('text/plain', req.body.message)
+    var mail = new helper.Mail(from_email, subject, to_email, content)
+
+    var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+    var request = sg.emptyRequest({
+        method: 'POST',
+        path: '/v3/mail/send',
+        body: mail.toJSON()
     });
+
+    sg.API(request, function(error, response) {
+        console.log(response.statusCode);
+        console.log(response.headers);
+        console.log(response.body);
+        if (response.statusCode === 202) {
+            res.json({ status: 'success' });
+        } else {
+            res.json({ status: 'error' });
+        }
+    })
 
 }
 

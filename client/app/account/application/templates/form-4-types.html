@@ -47,14 +47,13 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Network Center Lines Miles</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.jurisdiction.laneMiles" disabled>
-                        <i class="fa fa-user form-control-feedback"></i>
+                        <input type="text" class="form-control" ng-model="appCtrl.jurisdiction.centerLineMiles" disabled>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">% of Network to be Surveyed</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.networkSurveyPercent">
+                        <input type="text" class="form-control" ng-if="appCtrl.application.networkSurveyPercent" ng-model="appCtrl.application.networkSurveyPercent | number:1">
                     </div>
                 </div>
             </div>
@@ -63,17 +62,16 @@
                     <div class="form-group has-feedback">
                         <label class="control-label">Network Miles that will be Surveyed</label>
                         <input type="text" class="form-control" ng-model="appCtrl.application.networkMilesForSurvey" ng-change="appCtrl.updateMilesForSurvey()">
-                        <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="form-group has-feedback">
+                    <div class="form-group has-feedback" ng-if="appCtrl.application.networkMilesRemaining">
                         <label class="control-label">Network Miles Remaining to be Inspected</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.networkMilesRemaining">
-                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkMilesRemaining | number:1">
                     </div>
                 </div>
             </div>
+            <!-- Additional Funds Flag -->
             <div class="row">
                 <label class="control-label">Additional Funds</label>
                 <br>
@@ -88,19 +86,17 @@
                     </label>
                 </div>
             </div>
-            <div class="row" ng-show="appCtrl.application.networkAdditionalFundsFlag === 'Yes'">
+            <div class="row" ng-if="appCtrl.application.networkAdditionalFundsFlag === 'Yes'">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Additional funds amount</label>
                         <input type="text" class="form-control" ng-model="appCtrl.application.networkAdditionalFunds" ng-change="appCtrl.updateAdditionalFunds()">
-                        <i class="fa fa-envelope-o form-control-feedback"></i>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Percent Completed with Addtional Funding</label>
-                        <input type="email" class="form-control" ng-model="appCtrl.application.networkPercentAdditionalFunds">
-                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkPercentAdditionalFunds | number:1">
                     </div>
                 </div>
             </div>
@@ -158,8 +154,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Total Estimated Cost</label>
-                        <input type="email" class="form-control" ng-model="appCtrl.application.npamEstimatedcost">
-                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.npamEstimatedcost">
                     </div>
                 </div>
             </div>
@@ -229,16 +224,16 @@
                 <div class="col-md-8">
                     <div class="form-group has-feedback">
                         <label class="control-label">Project Description</label>
-                        <textarea rows="4" class="form-control" style="color:white;" ng-model="appCtrl.application.pdpProjectDescription"></textarea>
+                        <textarea rows="4" class="form-control" ng-model="appCtrl.application.pdpProjectDescription"></textarea>
                     </div>
                 </div>
             </div>
-          <!--   <div class="row">
+            <!--   <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Anticipated Construction Start Date</label>
-                        <input type="email" class="form-control" style="color:white;" ng-model="appCtrl.application.test">
-                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                        <input type="text" class="form-control" style="color:white;" ng-model="appCtrl.application.test">
+                     
                     </div>
                 </div>
             </div> -->
@@ -260,8 +255,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Total Estimated Cost</label>
-                        <input type="email" class="form-control" style="color:white;" ng-model="appCtrl.application.pdpEstimatedCost">
-                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.pdpEstimatedCost">
                     </div>
                 </div>
             </div>

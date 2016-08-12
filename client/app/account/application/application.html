@@ -9,9 +9,10 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group has-feedback">
-                            <label class="control-label">{{appCtrl.jurisdiction.name || 'Jurisdiction Name' }}</label>
-                            <select class="form-control" ng-change="appCtrl.updateJurisdiction()" ng-model="appCtrl.jurisdiction._id">
-                                <option ng-repeat="option in appCtrl.names" value="{{option._id}}">{{option.name}}</option>
+                            <label class="control-label">Selected: {{ appCtrl.jurisdiction.company }}</label>
+                            <select class="form-control" ng-change="appCtrl.updateJurisdiction()" ng-model="appCtrl.jurisdiction.jurisdictionId">
+                                <option value="">Select Jurisdiction...</option>
+                                <option ng-repeat="option in appCtrl.names" value="{{option.jurisdictionId}}">{{option.company}}</option>
                             </select>
                         </div>
                     </div>
@@ -60,4 +61,4 @@
 </div>
 <!-- section end -->
 <!-- Footer -->
- <footer style="margin:0;padding:0;"></footer>
+<footer style="margin:0;padding:0;"></footer>

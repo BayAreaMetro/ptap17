@@ -12,7 +12,7 @@ angular.module('ptapApp.footer.directive', [])
                 $scope.sendMail = function() {
                     $http.post('/api/contactform', $scope.email).success(function(response) {
                         console.log(response);
-                        if (response.message === 'success') {
+                        if (response.status === 'success') {
                             $scope.notification = 'success';
                             $scope.email = {};
                         }
