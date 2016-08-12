@@ -10,6 +10,7 @@ angular.module('ptapApp', [
         'ui.router',
         'ui.bootstrap',
         'ui.mask',
+        'ui.utils.masks',
         'validation.match',
         'ngAnimate',
         'ptapApp.breadCrumb.directive',

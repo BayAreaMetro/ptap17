@@ -90,7 +90,7 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Additional funds amount</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.networkAdditionalFunds" ng-change="appCtrl.updateAdditionalFunds()">
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkAdditionalFunds" ng-change="appCtrl.updateAdditionalFunds()" ui-money-mask="0">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -154,13 +154,13 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Total Estimated Cost</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.npamEstimatedcost">
+                        <input type="text" class="form-control" ng-model="appCtrl.application.npamEstimatedcost" ui-money-mask="0">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
-                        <label class="control-label">Additional funds amount {{ appCtrl.application.npamAdditionalFunds }}</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.npamAdditionalFunds">
+                        <label class="control-label">Additional funds amount</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.npamAdditionalFunds" ui-money-mask="0">
                     </div>
                 </div>
             </div>
@@ -261,13 +261,13 @@
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Total Estimated Cost</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.pdpEstimatedCost">
+                        <input type="text" class="form-control" ng-model="appCtrl.application.pdpEstimatedCost" ui-money-mask="0">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Additional funds amount</label>
-                        <input type="text" class="form-control" ng-model="appCtrl.application.pdpAdditionalFunds">
+                        <input type="text" class="form-control" ng-model="appCtrl.application.pdpAdditionalFunds" ui-money-mask="0">
                     </div>
                 </div>
             </div>
