@@ -153,6 +153,7 @@
                     // this.application.pdpAdditionalFunds = this.application.networkAdditionalFunds;
 
                     this.pageLoading = false;
+                    console.log(this.pageLoading);
 
                     //Find primary contact
                     return this.contacts.getOne(this.contact1Id);
@@ -274,7 +275,8 @@
                 var appId = this.applications.getId();
                 var appData = {
                     applicationId: appId,
-                    jurisdictionId: response.data.jurisdictionId
+                    jurisdictionId: response.data.jurisdictionId,
+                    networkCenterLineMiles: this.jurisdiction.centerLineMiles
                 };
                 console.log(appData);
                 this.applications.update(appId, appData).then(info => {
@@ -437,6 +439,19 @@
             this.applications.update(appId, appData).then(info => {
                 console.log(info);
                 this.application = info.data;
+
+
+                //Calculate Miles values 
+                console.log(this.$scope.calculateMiles(this.application.networkCenterLineMiles));
+                var newValues = this.$scope.calculateMiles(this.application.networkCenterLineMiles);
+                this.application.networkMilesRemaining = newValues.networkMilesRemaining;
+                this.application.networkMilesForSurvey = newValues.networkMilesForSurvey;
+                this.application.networkSurveyPercent = newValues.networkSurveyPercent;
+
+                //Set global variable for network miles remaining
+                this.applications.setNetworkMilesRemaining(this.application.networkMilesRemaining);
+
+
                 this.$state.go('application.form-4');
             }).catch(function(error) {
                 console.log(error);
@@ -492,6 +507,27 @@
             this.applications.update(appId, appData).then(info => {
                 console.log(info);
                 this.application = info.data;
+                console.log(this.application);
+                var newCostValues = this.$scope.calculateCosts(this.application.networkMilesForSurvey);
+
+                // Update PMS Summary Values
+                this.application.pmsGrantAmount = newCostValues.grant;
+                this.application.pmsLocalContribution = newCostValues.local;
+                this.application.pmsTotalProjectCost = newCostValues.total;
+                this.application.pmsAdditionalFunds = this.application.networkAdditionalFunds;
+
+                // Update Design Summary Values
+                var npamCosts = this.$scope.calculateDesignCosts(this.application.npamEstimatedcost);
+                this.application.npamLocalContribution = npamCosts.local;
+                this.application.npamGrantAmount = npamCosts.grant;
+                this.application.npamTotalProjectCost = _.toNumber(npamCosts.local) + _.toNumber(this.application.npamAdditionalFunds);
+                // this.application.npamAdditionalFunds = this.application.networkAdditionalFunds;
+
+                var pdpCosts = this.$scope.calculateDesignCosts(this.application.pdpEstimatedCost);
+                this.application.pdpGrantAmount = pdpCosts.grant;
+                this.application.pdpLocalContribution = pdpCosts.local;
+                this.application.pdpTotalProjectCost = _.toNumber(pdpCosts.local) + _.toNumber(this.application.pdpAdditionalFunds);
+                // this.application.pdpAdditionalFunds = this.application.networkAdditionalFunds;
                 this.$state.go('application.form-5');
             }).catch(function(error) {
                 console.log(error);
