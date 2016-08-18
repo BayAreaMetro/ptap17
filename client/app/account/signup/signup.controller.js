@@ -7,11 +7,17 @@ class SignupController {
     submitted = false;
     //end-non-standard
 
-    constructor(Auth, $state, applications, $scope) {
+    constructor(Auth, $state, applications, $scope, jurisdictions) {
         this.Auth = Auth;
         this.$state = $state;
         this.applications = applications;
         this.$scope = $scope;
+
+        jurisdictions.getJurisdictions().then(response => {
+            $scope.agencies = response.data;
+            // console.log($scope.agencies);
+
+        });
     }
 
     register(form) {

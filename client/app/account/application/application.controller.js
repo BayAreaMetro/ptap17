@@ -68,6 +68,7 @@
             //Load list of jurisdictions for drop down list
             this.jurisdictions.getJurisdictions().then(response => {
                 this.names = response.data;
+                this.application.lastMajorInspection = this.names.lastMajorInspection;
                 // console.log(this.names);
 
             });
@@ -276,7 +277,8 @@
                 var appData = {
                     applicationId: appId,
                     jurisdictionId: response.data.jurisdictionId,
-                    networkCenterLineMiles: this.jurisdiction.centerLineMiles
+                    networkCenterLineMiles: this.jurisdiction.centerLineMiles,
+                    lastMajorInspection: this.jurisdiction.lastMajorInspection
                 };
                 console.log(appData);
                 this.applications.update(appId, appData).then(info => {
@@ -590,6 +592,8 @@
             var id = this.jurisdiction.jurisdictionId;
             this.jurisdictions.getJurisdiction(id).then(response => {
                 this.jurisdiction = response.data;
+                this.application.lastMajorInspection = new Date(this.jurisdiction.lastMajorInspection);
+                console.log(this.application);
                 this.jurisdictions.setCurrent(response.data);
                 console.log(this.jurisdiction);
             });
