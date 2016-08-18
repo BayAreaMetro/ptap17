@@ -567,6 +567,10 @@
 
         submitApplication(form6) {
             this.submitted6 = true;
+            console.log('running last');
+            for (var index in this.application) {
+                console.log(index + " " + this.application[index]);
+            }
 
             if (form6.$valid) {
                 this.form6IsValid = true;
