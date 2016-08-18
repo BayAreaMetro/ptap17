@@ -21,31 +21,33 @@ angular.module('ptapApp.breadCrumb.directive', [])
                 }, {
                     link: 'application.form-2',
                     name: '2. Contact',
-                     title: 'Primary Contact'
+                    title: 'Primary Contact'
                 }, {
                     link: 'application.form-2b',
                     name: '2b. Contact',
-                     title: 'Street Saver Contact'
+                    title: 'Street Saver Contact'
                 }, {
                     link: 'application.form-3',
                     name: '3. General',
-                     title: 'General Information'
+                    title: 'General Information'
                 }, {
                     link: 'application.form-4',
                     name: '4. Types',
-                     title: 'Project Information'
+                    title: 'Project Information'
                 }, {
                     link: 'application.form-5',
                     name: '5. Summary',
-                     title: 'Summary'
+                    title: 'Summary'
                 }, {
                     link: 'application.form-6',
                     name: '6. Signature',
-                     title: 'Signature'
+                    title: 'Signature'
                 }];
 
                 $scope.setTitle = function(title) {
                     pages.setPageTitle(title);
+                    $scope.$parent.pageLoading = false;
+                    console.log($scope);
                 };
             }
         };

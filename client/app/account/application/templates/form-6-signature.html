@@ -2,8 +2,7 @@
 <div class="section gray-bg">
     <div class="container">
         <div role="alert" class="alert alert-danger alert-dismissible" ng-show="!appCtrl.form6IsValid">
-            <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            Please fix the errors on the page:
+            <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> Please fix the errors on the page:
         </div>
         <!-- <h2>Signature</h2> -->
         <p class="lead">This application must be submitted by the jurisdiction's Public Works Director or an authorized representative. The person signing this page authorizes the juridiction to apply for the Pavement Management Technical Assistance Program, Round 17.</p>
@@ -34,11 +33,11 @@
                     <p class="text-danger" ng-show="form6.publicWorksNumber.$error.required && appCtrl.submitted6">A phone number is required</p>
                 </div>
             </div>
-            <button type="submit" class="btn btn-default" ng-click="appCtrl.submitApplication(form6)">Submit Application</button>
+            <button type="submit" class="btn btn-default" ng-click="appCtrl.submitApplication(form6)" ng-hide="appCtrl.application.submitted === 'Yes'">Submit Application</button>
             <button type="submit" class="btn btn-success" ng-show="appCtrl.application.submitted === 'Yes'">Your application has been submitted</button>
         </form>
     </div>
 </div>
 <!-- section end -->
 <!-- Footer -->
- <!-- <footer style="margin:0;padding:0;"></footer> -->
+<!-- <footer style="margin:0;padding:0;"></footer> -->

@@ -12,10 +12,16 @@
             this.applicationId;
             this.application = {};
 
-
             this.formIsValid = true;
             this.form2bIsValid = true;
             this.form6IsValid = true;
+
+
+            $rootScope.$on('$stateChangeSuccess', function() {
+                console.log(document.documentElement.scrollTop, ' document');
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            });
 
             //Set state change watch
             $rootScope.$on('$stateChangeStart',
@@ -62,7 +68,7 @@
         }
 
         $onInit() {
-            this.pageLoading = true;
+            this.$scope.pageLoading = true;
             //Set page title
             this.$scope.pageTitle = this.pages.getPageTitle();
             //Load list of jurisdictions for drop down list
@@ -81,13 +87,13 @@
             this.applications.getCurrent(this.applicationId)
                 .then(response => {
                     if (!response.data.jurisdictionId) {
-                        this.pageLoading = false;
+                        this.$scope.pageLoading = false;
                     }
                     this.application = response.data;
-                    console.log(this.application.pdpAdditionalFunds);
+
+                    //Set Dates
                     this.application.pdpAnticipatedConstructionDate = new Date(response.data.pdpAnticipatedConstructionDate);
 
-                    // console.log(this.application);
                     this.contact1Id = this.application.primaryContactId;
                     this.contact2Id = this.application.streetSaverContactId;
                     if (this.contact1Id) {
@@ -153,19 +159,21 @@
                     this.application.pdpTotalProjectCost = _.toNumber(pdpCosts.local) + _.toNumber(this.application.pdpAdditionalFunds);
                     // this.application.pdpAdditionalFunds = this.application.networkAdditionalFunds;
 
-                    this.pageLoading = false;
-                    console.log(this.pageLoading);
+                    this.$scope.pageLoading = false;
+                    console.log(this.$scope.pageLoading);
 
                     //Find primary contact
                     return this.contacts.getOne(this.contact1Id);
                 }).then(response => {
                     // console.log(response.data);
                     this.contact1 = response.data;
+                    this.contact1.emailCon = this.contact1.email;
                     //Find streetsaver contact
                     return this.contacts.getOne(this.contact2Id);
                 }).then(response => {
                     // console.log(response.data);
                     this.contact2 = response.data;
+                    this.contact2.emailConfirm = this.contact2.email;
 
                 });
 
@@ -265,7 +273,7 @@
         reviewSection1(form) {
 
             this.submitted = true;
-
+            this.$scope.pageLoading = true;
             //Set page title
             this.pages.setPageTitle('Primary Contact');
             console.log(this.jurisdiction);
@@ -285,6 +293,7 @@
                     console.log(info);
 
                     this.$state.go('application.form-2');
+                    this.$scope.pageLoading = false;
                 }).catch(function(error) {
                     console.log(error);
                 });
@@ -297,7 +306,8 @@
 
         reviewSection2(form) {
             this.submitted = true;
-
+            this.$scope.pageLoading = true;
+            console.log(this.$scope.pageLoading);
             console.log(this.contact1);
             console.log(this.$scope.contact1Exists);
             this.$scope.contactId = uuid.v1();
@@ -309,6 +319,7 @@
                     this.contacts.update(this.contact1.contactId, this.contact1).then(response => {
                         console.log(response);
                         this.$state.go('application.form-2b');
+                        this.$scope.pageLoading = false;
                     }).catch(function(error) {
                         console.log(error);
                     });
@@ -325,6 +336,7 @@
                         console.log(appData);
                         this.applications.update(appId, appData).then(info => {
                             console.log(info);
+                            this.$scope.pageLoading = false;
                             this.$state.go('application.form-2b');
                         }).catch(function(error) {
                             console.log(error);
@@ -335,6 +347,7 @@
                     });
                 }
             } else {
+                this.$scope.pageLoading = false;
                 this.formIsValid = false;
             }
 
@@ -357,6 +370,7 @@
 
         reviewSection2b(form2b) {
             this.submitted2b = true;
+            this.$scope.pageLoading = true;
             console.log(this.submitted2b);
             console.log(form2b.$valid);
             //Set page title
@@ -369,6 +383,7 @@
                 if (this.$scope.contact2Exists) {
                     this.contacts.update(this.contact2.contactId, this.contact2).then(response => {
                         console.log(response);
+                        this.$scope.pageLoading = false;
                         this.$state.go('application.form-3');
                     }).catch(function(error) {
                         console.log(error);
@@ -391,6 +406,7 @@
                         };
                         this.applications.update(appId, appData).then(info => {
                             console.log(info);
+                            this.$scope.pageLoading = false;
                             this.$state.go('application.form-3');
                         }).catch(function(error) {
                             console.log(error);
@@ -409,6 +425,7 @@
                             console.log(appData);
                             this.applications.update(appId, appData).then(info => {
                                 console.log(info);
+                                this.$scope.pageLoading = false;
                                 this.$state.go('application.form-3');
                             }).catch(function(error) {
                                 console.log(error);
@@ -420,6 +437,7 @@
                     }
                 }
             } else {
+                this.$scope.pageLoading = false;
                 this.form2bIsValid = false;
             }
 
@@ -430,6 +448,7 @@
         reviewSection3() {
             //Set page title
             this.pages.setPageTitle('Project Information');
+            this.$scope.pageLoading = true;
             var appId = this.applications.getId();
             var appData = {
                 attendTraining: this.application.attendTraining,
@@ -452,20 +471,21 @@
 
                 //Set global variable for network miles remaining
                 this.applications.setNetworkMilesRemaining(this.application.networkMilesRemaining);
+                this.$scope.pageLoading = false;
 
-
+                var jurisdiction = this.jurisdictions.getCurrent();
+                console.log(jurisdiction);
                 this.$state.go('application.form-4');
             }).catch(function(error) {
                 console.log(error);
             });
-            var jurisdiction = this.jurisdictions.getCurrent();
-            console.log(jurisdiction);
-            this.$state.go('application.form-4');
+
         }
 
         reviewSection4() {
             //Set page title
             this.pages.setPageTitle('Project Cost Summary');
+            this.$scope.pageLoading = true;
             var appId = this.applications.getId();
             this.application.networkCenterLineMiles = this.jurisdiction.centerLineMiles;
             var appData = {
@@ -530,9 +550,11 @@
                 this.application.pdpLocalContribution = pdpCosts.local;
                 this.application.pdpTotalProjectCost = _.toNumber(pdpCosts.local) + _.toNumber(this.application.pdpAdditionalFunds);
                 // this.application.pdpAdditionalFunds = this.application.networkAdditionalFunds;
+                this.$scope.pageLoading = false;
                 this.$state.go('application.form-5');
             }).catch(function(error) {
                 console.log(error);
+                this.$scope.pageLoading = false;
             });
 
         }
@@ -540,6 +562,7 @@
         reviewSection5() {
             //Set page title
             var appId = this.applications.getId();
+            this.$scope.pageLoading = true;
             var appData = {
                 pmsGrantAmount: this.application.pmsGrantAmount,
                 pmsLocalContribution: this.application.pmsLocalContribution,
@@ -558,15 +581,18 @@
                 console.log(info);
                 this.application = info.data;
                 this.pages.setPageTitle('Signature');
+                this.$scope.pageLoading = false;
                 this.$state.go('application.form-6');
             }).catch(function(error) {
                 console.log(error);
+                this.$scope.pageLoading = false;
             });
 
         }
 
         submitApplication(form6) {
             this.submitted6 = true;
+            this.$scope.pageLoading = true;
             console.log('running last');
             for (var index in this.application) {
                 console.log(index + " " + this.application[index]);
@@ -582,12 +608,14 @@
                 this.applications.update(appId, appData).then(info => {
                     console.log(info);
                     this.pages.setPageTitle('Submission Successful!');
+                    this.$scope.pageLoading = false;
                     this.$state.go('application.success');
                 }).catch(function(error) {
                     console.log(error);
                 });
             } else {
                 this.form6IsValid = false;
+                this.$scope.pageLoading = false;
             }
         }
 
