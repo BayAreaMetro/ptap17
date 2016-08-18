@@ -14,7 +14,7 @@
                                             'has-error': form.firstname.$invalid && vm.submitted }">
                             <label for="firstname" class="col-sm-3 control-label">First Name <span class="text-danger small">*</span></label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="firstname" placeholder="First Name" required ng-model="vm.user.firstname">
+                                <input type="text" class="form-control" id="firstname" required ng-model="vm.user.firstname">
                                 <i class="fa fa-pencil form-control-feedback"></i>
                                 <p class="help-block" ng-show="form.inputName.$error.required && vm.submitted">
                                     A first name is required
@@ -25,7 +25,7 @@
                                             'has-error': form.lastname.$invalid && vm.submitted }">
                             <label for="lastname" class="col-sm-3 control-label">Last Name <span class="text-danger small">*</span></label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="lastname" placeholder="Last Name" required ng-model="vm.user.lastname">
+                                <input type="text" class="form-control" id="lastname" required ng-model="vm.user.lastname">
                                 <i class="fa fa-pencil form-control-feedback"></i>
                                 <p class="help-block" ng-show="form.lastname.$error.required && vm.submitted">
                                     A last name is required
@@ -36,7 +36,7 @@
                                             'has-error': form.email.$invalid && vm.submitted }">
                             <label for="email" class="col-sm-3 control-label">Email <span class="text-danger small">*</span></label>
                             <div class="col-sm-8">
-                                <input type="email" class="form-control" id="email" placeholder="Email" required ng-model="vm.user.email" required mongoose-error>
+                                <input type="email" class="form-control" id="email" required ng-model="vm.user.email" required mongoose-error>
                                 <i class="fa fa-envelope form-control-feedback"></i>
                                 <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
                                     Doesn't look like a valid email.
@@ -53,7 +53,7 @@
                                             'has-error': form.password.$invalid && vm.submitted }">
                             <label for="password" class="col-sm-3 control-label">Password <span class="text-danger small">*</span></label>
                             <div class="col-sm-8">
-                                <input type="password" class="form-control" id="password" placeholder="Password" class="form-control" ng-model="vm.user.password" ng-minlength="3" required mongoose-error>
+                                <input type="password" class="form-control" id="password" class="form-control" ng-model="vm.user.password" ng-minlength="3" required mongoose-error>
                                 <i class="fa fa-lock form-control-feedback"></i>
                                 <p class="help-block" ng-show="(form.password.$error.minlength || form.password.$error.required) && vm.submitted">
                                     Password must be at least 3 characters.
@@ -67,7 +67,7 @@
                                             'has-error': form.confirmPassword.$invalid && vm.submitted }">
                             <label for="confirmPassword" class="col-sm-3 control-label">Confirm Password <span class="text-danger small">*</span></label>
                             <div class="col-sm-8">
-                                <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword" match="vm.user.password" ng-minlength="3" required placeholder="Confirm Password" />
+                                <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword" match="vm.user.password" ng-minlength="3" required />
                                 <p class="help-block" ng-show="form.confirmPassword.$error.match && vm.submitted">
                                     Passwords must match.
                                 </p>
@@ -76,7 +76,7 @@
                         <div class="form-group has-feedback">
                             <label for="inputAgency" class="col-sm-3 control-label">Agency <span class="text-danger small">*</span></label>
                             <div class="col-sm-8">
-                                <select class="form-control" id="inputAgency" placeholder="Agency" required>
+                                <select class="form-control" id="inputAgency" required>
                                     <option value="">Select Agency</option>
                                     <option ng-repeat="agency in agencies" value="{{agency.jurisdictionId}}">{{agency.company}}</option>
                                 </select>
