@@ -1,6 +1,7 @@
 <!-- section start -->
 <div class="section default-bg">
     <div class="container">
+    <p class="lead">Please note: For all projects, the maximum grant amount is $100,000. This includes 80% funding from MTC and 20% local match.</p>
         <label class="control-label" for="inputSuccess3">Please select project types. (You can selection more than one if necessary).</label>
         <br>
         <div class="checkbox">
@@ -42,6 +43,7 @@
     <div class="container">
         <!-- Pavement Management Service Projects -->
         <h2>Pavement Management Service Project</h2>
+        <p class="lead">Please note: The grant maximum for PMP projects is based on the size of your jurisdiction.</p>
         <form role="form">
             <div class="row">
                 <div class="col-md-4">
@@ -73,7 +75,8 @@
             </div>
             <!-- Additional Funds Flag -->
             <div class="row">
-                <label class="control-label">Additional Funds</label>
+              <label class="control-label">Can your jurisdiction contribute funding to this project? If so, select 'Yes' and enter that amount below. Please note that these funds are in excess of the local match.</label><br>
+                <label class="control-label">Additional Funds Amount:</label>
                 <br>
                 <div class="radio">
                     <label>
@@ -157,9 +160,13 @@
                         <input type="text" class="form-control" ng-model="appCtrl.application.npamEstimatedcost" ui-money-mask="0">
                     </div>
                 </div>
-                <div class="col-md-4">
+
+            </div>
+            <div class="row">
+                 <div class="col-md-4">
                     <div class="form-group has-feedback">
-                        <label class="control-label">Additional funds amount</label>
+                     <label class="control-label">Can your jurisdiction contribute funding to this project? If so, enter that amount here. Please note that these funds are in excess of the local match.</label><br>
+                        <label class="control-label">Additional funds amount:</label>
                         <input type="text" class="form-control" ng-model="appCtrl.application.npamAdditionalFunds" ui-money-mask="0">
                     </div>
                 </div>
@@ -266,7 +273,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
-                        <label class="control-label">Additional funds amount</label>
+                    <label class="control-label">Can your jurisdiction contribute funding to this project? If so, enter that amount here. Please note that these funds are in excess of the local match.</label><br>
+                        <label class="control-label">Additional funds amount:</label>
                         <input type="text" class="form-control" ng-model="appCtrl.application.pdpAdditionalFunds" ui-money-mask="0">
                     </div>
                 </div>

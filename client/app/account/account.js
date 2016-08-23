@@ -27,6 +27,12 @@ angular.module('ptapApp')
         controller: 'SignupController',
         controllerAs: 'vm'
       })
+      .state('forgotPwd', {
+        url: '/forgot',
+        templateUrl: 'app/account/login/templates/forgotpwd.html',
+        controller: 'LoginController',
+        controllerAs: 'vm'
+      })
       .state('settings', {
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',

@@ -123,6 +123,36 @@ export function changePassword(req, res, next) {
 }
 
 /**
+ * Change a users forgotten password
+ */
+export function forgotPassword(req, res, next) {
+    var email = req.body.email;
+    console.log(email);
+    console.log(req.body);
+    var oldPass = 'test';
+    var newPass = 'test';
+    var N = 8;
+    var newnumber = (Math.random().toString(36)+'00000000000000000').slice(2, N+2);
+    console.log(newnumber);
+
+    return User.find({
+            where: {
+                email: email
+            }
+        })
+        .then(user => {
+            // console.log(user);
+            user.password = newPass;
+            return user.save()
+                .then(() => {
+                    res.status(204).json({status: 'success'});
+                })
+                .catch(validationError(res));
+
+        });
+}
+
+/**
  * Change a users account info
  */
 export function changeMyInfo(req, res, next) {
