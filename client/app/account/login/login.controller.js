@@ -1,7 +1,7 @@
 'use strict';
 
 class LoginController {
-    constructor(Auth, $state, $http) {
+    constructor(Auth, $state, $http, $scope) {
         this.user = {};
         this.forgotUser = {};
         this.errors = {};
@@ -9,6 +9,8 @@ class LoginController {
         this.$http = $http;
         this.Auth = Auth;
         this.$state = $state;
+        this.$scope = $scope;
+        this.passwordSuccess = false;
     }
 
     login(form) {
@@ -34,9 +36,13 @@ class LoginController {
 
         this.$http.post('/api/users/forgotPassword', this.forgotUser).success(function(response) {
             console.log(response);
-        }).error(function(err) {
-            console.log(err);
-        });
+        }).then(user => {
+            this.passwordSuccess = true;
+            this.forgotUser = null;
+        }).catch(err => {
+            this.passwordFail = true;
+            
+        })
 
     }
 }

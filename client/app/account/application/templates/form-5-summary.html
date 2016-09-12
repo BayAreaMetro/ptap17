@@ -31,22 +31,30 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
-                        <label class="control-label">Total cost to juridiction</label>
+                        <label class="control-label"><strong>TOTAL ESTIMATED PROJECT COST</strong></label>
                         <input type="text" disabled class="form-control" ng-model="appCtrl.application.pmsTotalProjectCost | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">TOTAL ESTIMATED COST TO JURISDICTION</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pmsTotalJurisdictionCost | currency">
                     </div>
                 </div>
             </div>
         </form>
         <h3 ng-show="appCtrl.application.npamFlag === 'Yes'">Non Pavement Asset Management Project</h3>
         <form role="form" ng-show="appCtrl.application.npamFlag === 'Yes'">
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Estimated Cost</label>
                         <input type="text" disabled class="form-control" ng-model="appCtrl.application.npamEstimatedcost | currency">
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
@@ -74,7 +82,15 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
-                        <label class="control-label">Total cost to jurisdiction</label>
+                        <label class="control-label">TOTAL ESTIMATED PROJECT COST</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.npamTotalEstimatedProjectCost | currency">
+                    </div>
+                </div>```
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">TOTAL ESTIMATED COST TO JURISDICTION</label>
                         <input type="text" disabled class="form-control" ng-model="appCtrl.application.npamTotalProjectCost | currency">
                     </div>
                 </div>
@@ -82,14 +98,14 @@
         </form>
         <h3 ng-show="appCtrl.application.pdpFlag === 'Yes'">Pavement Design Project (PS&E)</h3>
         <form role="form" ng-show="appCtrl.application.pdpFlag === 'Yes'">
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
                         <label class="control-label">Estimated Cost</label>
                         <input type="text" disabled class="form-control" ng-model="appCtrl.application.pdpEstimatedCost | currency">
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
@@ -117,7 +133,15 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group has-feedback">
-                        <label class="control-label">Total cost to juridiction</label>
+                        <label class="control-label">TOTAL ESTIMATED PROJECT COST</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pdpTotalEstimatedProjectCost | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">TOTAL ESTIMATED COST TO JURISDICTION</label>
                         <input type="text" disabled class="form-control" ng-model="appCtrl.application.pdpTotalProjectCost | currency">
                     </div>
                 </div>

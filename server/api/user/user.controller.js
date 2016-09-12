@@ -5,6 +5,7 @@ import passport from 'passport';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
 import uuid from 'node-uuid';
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 
 function validationError(res, statusCode) {
     statusCode = statusCode || 422;
@@ -132,7 +133,7 @@ export function forgotPassword(req, res, next) {
     var oldPass = 'test';
     var newPass = 'test';
     var N = 8;
-    var newnumber = (Math.random().toString(36)+'00000000000000000').slice(2, N+2);
+    var newnumber = (Math.random().toString(36) + '00000000000000000').slice(2, N + 2);
     console.log(newnumber);
 
     return User.find({
@@ -142,10 +143,39 @@ export function forgotPassword(req, res, next) {
         })
         .then(user => {
             // console.log(user);
-            user.password = newPass;
+            user.password = newnumber;
             return user.save()
                 .then(() => {
-                    res.status(204).json({status: 'success'});
+                    //Email user their new password
+                    var helper = require('sendgrid').mail
+                    var from_email = new helper.Email('chohorst@mtc.ca.gov')
+                    var to_email = new helper.Email(email)
+                    var subject = 'Password Request'
+                    var content = new helper.Content('text/plain', 'Your new password is: ' + newnumber)
+                    var mail = new helper.Mail(from_email, subject, to_email, content)
+
+                    var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+                    var request = sg.emptyRequest({
+                        method: 'POST',
+                        path: '/v3/mail/send',
+                        body: mail.toJSON()
+                    });
+
+                    sg.API(request, function(error, response) {
+                        console.log(response.statusCode);
+                        console.log(response.headers);
+                        console.log(response.body);
+                        if (response.statusCode === 202) {
+                            res.json({ status: 'success' });
+                        } else {
+                            res.json({ status: 'error' });
+                        }
+                    })
+
+
+
+
+
                 })
                 .catch(validationError(res));
 

@@ -3,15 +3,28 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="footer-content" style="text-align:left;">
-                    <div class="logo-footer"><img alt="" src="images/logo_red_footer.png" id="logo-footer"></div>
-                    <h2>Get in touch</h2>
+
+
+                    <table style="background-color:#004677">
+                        <tr>
+                            <td style="background-color:#004677">
+                                <div class="logo-footer"><img alt="" src="assets/images/mtc_logo_short.png" width="40" height="40" id="logo-footer"></div>
+                            </td>
+                            <td style="background-color:#004677; padding-left:5px; padding-top:15px;">
+                                <h2>Get in touch</h2></td>
+                        </tr>
+                    </table>
+
                     <p>If you have any questions about the application process, or feedback regarding this web application, please feel free to contact us.</p>
+                    <br> Pavement Management Technical Assistance Program
+                    <br>Metropolitan Transportation Commission
                     <p>Bay Area Metro Center
                         <br> 375 Beale Street, Suite 800
                         <br> San Francisco, CA
                         <br> 94105
                         <br>
                         <a href="http://www.mtc.ca.gov">www.mtc.ca.gov</a>
+                        <br><a href="http://mtc.ca.gov/our-work/invest-protect/investment-strategies-commitments/fix-it-first/local-streets-and-roads-0">P-TAP Program Web Page</a>
                     </p>
                     <!-- <div class="row">
                             <div class="col-md-6">
@@ -43,21 +56,21 @@
                     <div id="MessageNotSent2" class="alert alert-danger" ng-show="notification === 'error'">
                         Oops! Something went wrong please refresh the page and try again.
                     </div>
-                    <form id="footer-form" role="form" novalidate="novalidate">
+                    <form id="footer-form" role="form" novalidate="novalidate" style="color:white">
                         <div class="form-group has-feedback">
                             <label for="name2" class="sr-only">Name</label>
-                            <input type="text" name="name2" placeholder="Name" id="name2" class="form-control" ng-model="email.from_name">
-                            <i class="fa fa-user form-control-feedback"></i>
+                            <input type="text" name="name2" placeholder="Name" id="name2" class="form-control" ng-model="email.from_name" style="color:white">
+                            <i class="fa fa-user form-control-feedback" style="line-height:0 !important"></i>
                         </div>
                         <div class="form-group has-feedback">
                             <label for="email2" class="sr-only">Email address</label>
-                            <input type="email" name="email2" placeholder="Enter email" id="email2" class="form-control" ng-model="email.from_address">
-                            <i class="fa fa-envelope form-control-feedback"></i>
+                            <input type="email" name="email2" placeholder="Enter email" id="email2" class="form-control" ng-model="email.from_address" style="color:white">
+                            <i class="fa fa-envelope form-control-feedback" style="line-height:0 !important"></i>
                         </div>
                         <div class="form-group has-feedback">
                             <label for="message2" class="sr-only">Message</label>
-                            <textarea name="message2" placeholder="Message" id="message2" rows="4" class="form-control" ng-model="email.message"></textarea>
-                            <i class="fa fa-pencil form-control-feedback"></i>
+                            <textarea name="message2" placeholder="Message" id="message2" rows="4" class="form-control" ng-model="email.message" style="color:white"></textarea>
+                            <i class="fa fa-pencil form-control-feedback" style="line-height:0 !important"></i>
                         </div>
                         <input type="submit" class="submit-button btn btn-default" value="Send" ng-click="sendMail()">
                     </form>

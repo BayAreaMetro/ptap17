@@ -145,19 +145,20 @@
                     this.application.pmsLocalContribution = newCostValues.local;
                     this.application.pmsTotalProjectCost = newCostValues.total;
                     this.application.pmsAdditionalFunds = this.application.networkAdditionalFunds;
+                    this.application.pmsTotalJurisdictionCost = this.application.networkAdditionalFunds + this.application.pmsLocalContribution;
 
                     // Update Design Summary Values
                     var npamCosts = this.$scope.calculateDesignCosts(this.application.npamEstimatedcost);
                     this.application.npamLocalContribution = npamCosts.local;
                     this.application.npamGrantAmount = npamCosts.grant;
                     this.application.npamTotalProjectCost = _.toNumber(npamCosts.local) + _.toNumber(this.application.npamAdditionalFunds);
-                    // this.application.npamAdditionalFunds = this.application.networkAdditionalFunds;
+                    this.application.npamTotalEstimatedProjectCost = _.toNumber(this.application.npamAdditionalFunds) + _.toNumber(this.application.npamGrantAmount) + _.toNumber(this.application.npamLocalContribution);
 
                     var pdpCosts = this.$scope.calculateDesignCosts(this.application.pdpEstimatedCost);
                     this.application.pdpGrantAmount = pdpCosts.grant;
                     this.application.pdpLocalContribution = pdpCosts.local;
                     this.application.pdpTotalProjectCost = _.toNumber(pdpCosts.local) + _.toNumber(this.application.pdpAdditionalFunds);
-                    // this.application.pdpAdditionalFunds = this.application.networkAdditionalFunds;
+                    this.application.pdpTotalEstimatedProjectCost = _.toNumber(this.application.pdpAdditionalFunds) + _.toNumber(this.application.pdpGrantAmount) + _.toNumber(this.application.pdpLocalContribution);
 
                     this.$scope.pageLoading = false;
                     console.log(this.$scope.pageLoading);
@@ -537,19 +538,20 @@
                 this.application.pmsLocalContribution = newCostValues.local;
                 this.application.pmsTotalProjectCost = newCostValues.total;
                 this.application.pmsAdditionalFunds = this.application.networkAdditionalFunds;
+                this.application.pmsTotalJurisdictionCost = this.application.networkAdditionalFunds + this.application.pmsLocalContribution;
 
                 // Update Design Summary Values
                 var npamCosts = this.$scope.calculateDesignCosts(this.application.npamEstimatedcost);
                 this.application.npamLocalContribution = npamCosts.local;
                 this.application.npamGrantAmount = npamCosts.grant;
                 this.application.npamTotalProjectCost = _.toNumber(npamCosts.local) + _.toNumber(this.application.npamAdditionalFunds);
-                // this.application.npamAdditionalFunds = this.application.networkAdditionalFunds;
+                this.application.npamTotalEstimatedProjectCost = _.toNumber(this.application.npamAdditionalFunds) + _.toNumber(this.application.npamGrantAmount) + _.toNumber(this.application.npamLocalContribution);
 
                 var pdpCosts = this.$scope.calculateDesignCosts(this.application.pdpEstimatedCost);
                 this.application.pdpGrantAmount = pdpCosts.grant;
                 this.application.pdpLocalContribution = pdpCosts.local;
                 this.application.pdpTotalProjectCost = _.toNumber(pdpCosts.local) + _.toNumber(this.application.pdpAdditionalFunds);
-                // this.application.pdpAdditionalFunds = this.application.networkAdditionalFunds;
+                this.application.pdpTotalEstimatedProjectCost = _.toNumber(this.application.pdpAdditionalFunds) + _.toNumber(this.application.pdpGrantAmount) + _.toNumber(this.application.pdpLocalContribution);
                 this.$scope.pageLoading = false;
                 this.$state.go('application.form-5');
             }).catch(function(error) {
