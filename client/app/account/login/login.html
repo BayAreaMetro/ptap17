@@ -48,7 +48,7 @@
                 <div class="form-block center-block">
                     <h2 class="title">Login</h2>
                     <hr>
-                    <form class="form-horizontal" name="form" ng-submit="vm.login(form)" novalidate>
+                    <form class="form-horizontal" name="form" novalidate>
                         <div class="form-group has-feedback">
                             <label for="inputUserName" class="col-sm-3 control-label">Email</label>
                             <div class="col-sm-8">
@@ -74,7 +74,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-8">
-                                <button type="submit" class="btn btn-group btn-default btn-sm">Log In</button>
+                                <button type="submit" class="btn btn-group btn-default btn-sm" ng-click="vm.login(form)">Log In</button>
                                 <ul>
                                     <li><a ui-sref="forgotPwd">Forgot your password?</a></li>
                                 </ul>
