@@ -17,8 +17,7 @@ module.exports = {
         }
     },
     sendgrid: {
-        user: process.env.SENDGRID_USER,
-        pwd: process.env.SENDGRID_PWD
+        API_KEY: process.env.SENDGRID_API_KEY
     },
     // Seed database on startup
     seedDB: false

@@ -14,6 +14,7 @@ module.exports = {
         8080,
 
     sequelize: {
+        // uri: 'mssql://ksmith:GISatmtc349@ptap-db.c4ttzt2cz0de.us-west-2.rds.amazonaws.com:1433/ptap-dev',
         uri: process.env.SEQUELIZE_URI,
         options: {
             logging: false,
@@ -25,7 +26,7 @@ module.exports = {
         }
     },
     sendgrid: {
-        user: process.env.SENDGRID_USER,
-        pwd: process.env.SENDGRID_PWD
+        API_KEY: process.env.SENDGRID_API_KEY
+
     }
 };

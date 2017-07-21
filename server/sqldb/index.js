@@ -9,9 +9,10 @@ import config from '../config/environment';
 import Sequelize from 'sequelize';
 
 var db = {
-  Sequelize,
-  sequelize: new Sequelize(config.sequelize.uri, config.sequelize.options)
+    Sequelize,
+    sequelize: new Sequelize(config.sequelize.uri, config.sequelize.options)
 };
+console.log(config.sequelize);
 
 // Insert models below
 db.Contactform = db.sequelize.import('../api/contactform/contactform.model');
