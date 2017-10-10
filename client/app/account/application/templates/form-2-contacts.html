@@ -1,0 +1,85 @@
+<!-- section start -->
+<div class="section gray-bg">
+    <div class="container">
+        <div role="alert" class="alert alert-danger alert-dismissible" ng-show="!appCtrl.formIsValid">
+            <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            Please fix the errors on the page:
+        </div>
+        <form role="form" name="form2">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <select class="form-control" ng-model="appCtrl.contact1.title" required>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">First Name</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.contact1.firstName" name="firstname" id="firstname" required>
+                        <i class="fa fa-user form-control-feedback"></i>
+                    </div>
+                    <p class="text-danger" ng-show="form2.firstname.$error.required && appCtrl.submitted">A first name is required</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Last Name</label>
+                        <input type="text" class="form-control" name="lastname" id="lastname" ng-model="appCtrl.contact1.lastName" required>
+                        <i class="fa fa-user form-control-feedback"></i>
+                    </div>
+                    <p class="text-danger" ng-show="form2.lastname.$error.required && appCtrl.submitted">A last name is required</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Job Title</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.contact1.position" name="jobTitle" id="jobTitle" required>
+                        <i class="fa fa-user form-control-feedback"></i>
+                    </div>
+                    <p class="text-danger" ng-show="form2.jobTitle.$error.required && appCtrl.submitted">A job title is required</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Phone</label>
+                        <input type="text" class="form-control" name="contact1Phone" id="contact1Phone" ng-model="appCtrl.contact1.phone" ui-mask="(999) 999-9999" ng-bind="appCtrl.contact1.phone" required>
+                        <i class="fa fa-user form-control-feedback"></i>
+                    </div>
+                    <p class="text-danger" ng-show="form2.contact1Phone.$error.required && appCtrl.submitted">A phone number is required</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Email Address</label>
+                        <input type="email" name="contact1Email" id="contact1Email" class="form-control" ng-model="appCtrl.contact1.email" required>
+                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                    </div>
+                    <p class="text-danger" ng-show="form2.contact1Email.$error.required && appCtrl.submitted">An email address is required</p>
+                    <p class="text-danger" ng-show="form2.contact1Email.$error.email && appCtrl.submitted">Please enter a valid email address</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Confirm Email Address</label>
+                        <input type="email" name="emailCon" id="emailCon" class="form-control" ng-model="appCtrl.contact1.emailCon" match="appCtrl.contact1.email" required>
+                        <i class="fa fa-envelope-o form-control-feedback"></i>
+                    </div>
+                    <p class="text-danger">
+                        <span ng-show="form2.emailCon.$error.match && appCtrl.submitted">Please make sure email addresses match!</span><br>
+                        <span ng-show="form2.emailCon.$error.required && appCtrl.submitted">Please confirm email address!</span>
+                    </p>
+                </div>
+            </div>
+            <!-- <button type="submit" class="btn btn-default" ng-click="appCtrl.save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button> -->
+            <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection2(form2)"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
+        </form>
+    </div>
+</div>
+<!-- section end -->
+<!-- Footer -->
+ <!-- <footer style="margin:0;padding:0;"></footer> -->

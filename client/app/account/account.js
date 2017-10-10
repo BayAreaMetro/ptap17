@@ -18,13 +18,19 @@ angular.module('ptapApp')
                           $state.current.referrer ||
                           'main';
           Auth.logout();
-          $state.go(referrer);
+          $state.go('main');
         }
       })
       .state('signup', {
         url: '/signup',
         templateUrl: 'app/account/signup/signup.html',
         controller: 'SignupController',
+        controllerAs: 'vm'
+      })
+      .state('forgotPwd', {
+        url: '/forgot',
+        templateUrl: 'app/account/login/templates/forgotpwd.html',
+        controller: 'LoginController',
         controllerAs: 'vm'
       })
       .state('settings', {

@@ -2,35 +2,49 @@
 
 (function() {
 
-class MainController {
+    class MainController {
 
-  constructor($http) {
-    this.$http = $http;
-    this.awesomeThings = [];
-  }
+        constructor($http, Auth, applications, $scope, pages) {
+            this.$http = $http;
+            this.awesomeThings = [];
+            this.isLoggedIn = Auth.isLoggedIn;
+            this.isAdmin = Auth.isAdmin;
+            this.getCurrentUser = Auth.getCurrentUser;
+            this.applications = applications;
 
-  $onInit() {
-    this.$http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-    });
-  }
+            $scope.setPageTitle = function(){
+                pages.setPageTitle('Jurisdiction Information');
+            };
+        }
 
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
+        $onInit() {
+            this.getCurrentUser(function(response) {
+               
+            }).then(response => {
+                console.log(response);
+                this.applications.setId(response.applicationId);
+            });
+
+
+        }
+
+        addThing() {
+            if (this.newThing) {
+                this.$http.post('/api/things', { name: this.newThing });
+                this.newThing = '';
+            }
+        }
+
+        deleteThing(thing) {
+            this.$http.delete('/api/things/' + thing._id);
+        }
     }
-  }
 
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
-  }
-}
-
-angular.module('ptapApp')
-  .component('main', {
-    templateUrl: 'app/main/main.html',
-    controller: MainController
-  });
+    angular.module('ptapApp')
+        .component('main', {
+            templateUrl: 'app/main/main.html',
+            controller: MainController,
+            controllerAs: 'main'
+        });
 
 })();

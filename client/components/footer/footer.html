@@ -1,6 +1,96 @@
-<div class="container">
-  <p>Angular Fullstack v3.5.0 |
-    <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-    <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a>
-  </p>
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="footer-content" style="text-align:left;">
+
+
+                    <table style="background-color:#004677">
+                        <tr>
+                            <td style="background-color:#004677">
+                                <div class="logo-footer"><img alt="" src="assets/images/mtc_logo_short.png" width="40" height="40" id="logo-footer"></div>
+                            </td>
+                            <td style="background-color:#004677; padding-left:5px; padding-top:15px;">
+                                <h2>Get in touch</h2>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p>If you have any questions about the application process, or feedback regarding this web application, please feel free to contact us.</p>
+                    <br> Pavement Management Technical Assistance Program
+                    <br>Metropolitan Transportation Commission
+                    <p>Bay Area Metro Center
+                        <br> 375 Beale Street, Suite 800
+                        <br> San Francisco, CA
+                        <br> 94105
+                        <br>
+                        <a href="http://www.mtc.ca.gov">www.mtc.ca.gov</a>
+                        <br><a href="http://mtc.ca.gov/our-work/invest-protect/investment-strategies-commitments/fix-it-first/local-streets-and-roads-0">P-TAP Program Web Page</a>
+                    </p>
+                    <!-- <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-icons">
+                                    <li><i class="fa fa-map-marker pr-10"></i> One infinity loop, 54100</li>
+                                    <li><i class="fa fa-phone pr-10"></i> +00 1234567890</li>
+                                    <li><i class="fa fa-envelope-o pr-10"></i> info@idea.com</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="social-links">
+                                    <li class="facebook"><a href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li class="twitter"><a href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="googleplus"><a href="http://plus.google.com" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                    <li class="skype"><a href="http://www.skype.com" target="_blank"><i class="fa fa-skype"></i></a></li>
+                                    <li class="linkedin"><a href="http://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a class="link" href="page-about.html"><span>Read More</span></a> -->
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="footer-content">
+                    <h2>Contact Us</h2>
+                    <div id="MessageSent2" class="alert alert-success" ng-show="notification === 'success'">
+                        We have received your message, and will contact you shortly if necessary.
+                    </div>
+                    <div id="MessageNotSent2" class="alert alert-danger" ng-show="notification === 'error'">
+                        Oops! Something went wrong please refresh the page and try again.
+                    </div>
+                    <form id="footer-form" role="form" novalidate="novalidate" style="color:white">
+                        <div class="form-group has-feedback">
+                            <label for="name2" class="sr-only">Name</label>
+                            <input type="text" name="name2" placeholder="Name" id="name2" class="form-control" ng-model="email.from_name" style="color:white">
+                            <i class="fa fa-user form-control-feedback" style="line-height:0 !important"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="email2" class="sr-only">Email address</label>
+                            <input type="email" name="email2" placeholder="Enter email" id="email2" class="form-control" ng-model="email.from_address" style="color:white">
+                            <i class="fa fa-envelope form-control-feedback" style="line-height:0 !important"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="message2" class="sr-only">Message</label>
+                            <textarea name="message2" placeholder="Message" id="message2" rows="4" class="form-control" ng-model="email.message" style="color:white"></textarea>
+                            <i class="fa fa-pencil form-control-feedback" style="line-height:0 !important"></i>
+                        </div>
+                        <input type="submit" class="submit-button btn btn-default" value="Send" ng-click="sendMail()">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- .footer end -->
+<!-- .subfooter start -->
+<!-- ================ -->
+<div class="subfooter">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <p>Copyright &copy; 2016 Metropolitan Transportation Commission. Developed by <a href="http://gis.mtc.ca.gov" target="_blank">MTCGIS</a>. All Rights Reserved</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- .subfooter end -->

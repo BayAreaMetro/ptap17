@@ -1,0 +1,65 @@
+<breadcrumb></breadcrumb>
+<page-heading></page-heading>
+<!-- section start -->
+<div ui-view="application-content">
+    <div class="loading" ng-show="pageLoading">Loading&#8230;</div>
+    <div class="section gray-bg">
+        <div class="container">
+            <!-- <h2>Jurisdiction Information</h2> -->
+            <form role="form">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback">
+                            <label class="control-label">Selected: {{ appCtrl.jurisdiction.company }}</label>
+                            <select class="form-control" ng-change="appCtrl.updateJurisdiction()" ng-model="appCtrl.jurisdiction.jurisdictionId">
+                                <option value="">Select Jurisdiction...</option>
+                                <option ng-repeat="option in appCtrl.names" value="{{option.jurisdictionId}}">{{option.company}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback">
+                            <label class="control-label">Street Address</label>
+                            <input type="text" class="form-control" ng-model="appCtrl.jurisdiction.street">
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback">
+                            <label class="control-label">Address 2</label>
+                            <input type="text" class="form-control" ng-model="appCtrl.jurisdiction.street2">
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback">
+                            <label class="control-label">City</label>
+                            <input type="text" class="form-control" ng-model="appCtrl.jurisdiction.city">
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback">
+                            <label class="control-label">Zip</label>
+                            <input type="text" class="form-control" ng-model="appCtrl.jurisdiction.zip">
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="submit" class="btn btn-default" ng-click="save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button> -->
+                <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection1()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- section end -->
+<!-- Footer -->
+<footer style="margin:0;padding:0;"></footer>

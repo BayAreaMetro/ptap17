@@ -4,19 +4,22 @@
 // ==================================
 module.exports = {
 
-  // Sequelize connection opions
-  sequelize: {
-    uri: 'sqlite://',
-    options: {
-      logging: false,
-      storage: 'dev.sqlite',
-      define: {
-        timestamps: false
-      }
-    }
-  },
-
-  // Seed database on startup
-  seedDB: true
+    // Sequelize connection opions
+    sequelize: {
+        uri: process.env.SEQUELIZE_URI,
+        options: {
+            logging: false,
+            // storage: 'dev.sqlite',
+            dialect: 'mssql',
+            define: {
+                timestamps: true
+            }
+        }
+    },
+    sendgrid: {
+        API_KEY: process.env.SENDGRID_API_KEY
+    },
+    // Seed database on startup
+    seedDB: false
 
 };

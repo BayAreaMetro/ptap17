@@ -1,0 +1,11 @@
+<div class="page-intro" style="margin-top: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li ng-repeat="link in breadcrumbs"><a class="btn radius btn-white btn-sm" ui-sref="{{ link.link }}" ng-click="setTitle(link.title)">{{ link.name }}</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

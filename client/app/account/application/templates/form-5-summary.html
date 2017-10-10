@@ -1,0 +1,156 @@
+<!-- section start -->
+<div class="section gray-bg">
+    <div class="container">
+        <!-- <h2>Project Budget Summary</h2> -->
+        <h3 ng-show="appCtrl.application.pmsFlag === 'Yes'">Pavement Management Service Project</h3>
+        <form role="form" ng-show="appCtrl.application.pmsFlag === 'Yes'">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Projected grant amount</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pmsGrantAmount | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Local contribution(20% of total):</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pmsLocalContribution | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Additional committed funds</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pmsAdditionalFunds | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label"><strong>TOTAL ESTIMATED PROJECT COST</strong></label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pmsTotalProjectCost | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">TOTAL ESTIMATED COST TO JURISDICTION</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pmsTotalJurisdictionCost | currency">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <h3 ng-show="appCtrl.application.npamFlag === 'Yes'">Non Pavement Asset Management Project</h3>
+        <form role="form" ng-show="appCtrl.application.npamFlag === 'Yes'">
+            <!--<div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Estimated Cost</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.npamEstimatedcost | currency">
+                    </div>
+                </div>
+            </div>-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Projected Grant Amount</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.npamGrantAmount | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Local contribution(20% of total):</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.npamLocalContribution | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Additional funds needed to complete project</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.npamAdditionalFunds | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">TOTAL ESTIMATED PROJECT COST</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.npamTotalEstimatedProjectCost | currency">
+                    </div>
+                </div>```
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">TOTAL ESTIMATED COST TO JURISDICTION</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.npamTotalProjectCost | currency">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <h3 ng-show="appCtrl.application.pdpFlag === 'Yes'">Pavement Design Project (PS&E)</h3>
+        <form role="form" ng-show="appCtrl.application.pdpFlag === 'Yes'">
+            <!--<div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Estimated Cost</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pdpEstimatedCost | currency">
+                    </div>
+                </div>
+            </div>-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Projected Grant Amount</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pdpGrantAmount | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Local contribution(20% of total):</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pdpLocalContribution | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Additional funds needed to complete project</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pdpAdditionalFunds | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">TOTAL ESTIMATED PROJECT COST</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pdpTotalEstimatedProjectCost | currency">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">TOTAL ESTIMATED COST TO JURISDICTION</label>
+                        <input type="text" disabled class="form-control" ng-model="appCtrl.application.pdpTotalProjectCost | currency">
+                    </div>
+                </div>
+            </div>
+            <!-- <button type="submit" class="btn btn-default" ng-click="appCtrl.save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button> -->
+            <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection5()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
+        </form>
+    </div>
+</div>
+<!-- section end -->
+<!-- Footer -->
+<!-- <footer style="margin:0;padding:0;"></footer> -->

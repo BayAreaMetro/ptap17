@@ -1,0 +1,329 @@
+<!-- section start -->
+<div class="section default-bg">
+    <div class="container">
+        <p class="lead">Please note: For all projects, the maximum grant amount is $100,000. This includes 80% funding from MTC and 20% local match.</p>
+        <label class="control-label" for="inputSuccess3">Please select project types. (You can selection more than one if necessary).</label>
+        <br>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="Yes" ng-model="appCtrl.application.pmsFlag" ng-true-value="'Yes'" ng-false-value="'No'" ng-change="appCtrl.updateFlag()"> Pavement Management Service Project
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="appCtrl.application.npamFlag" ng-true-value="'Yes'" ng-false-value="'No'" ng-change="appCtrl.updateFlag()"> Non Pavement Asset Management Project
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="appCtrl.application.pdpFlag" ng-true-value="'Yes'" ng-false-value="'No'" ng-change="appCtrl.updateFlag()"> Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E)
+            </label>
+        </div>
+        <br>
+        <!--  <p>Costs</p>
+        <p>
+            <li>PMS Grant Amount: {{ appCtrl.application.pmsGrantAmount }}</li>
+            <li>PMS Local Contribution: {{ appCtrl.application.pmsLocalContribution }}</li>
+            <li>PMS Additional Funds: {{ appCtrl.application.pmsAdditionalFunds }}</li>
+            <li>PMS Total Cost to Jurisdiction: {{ appCtrl.application.pmsTotalProjectCost }}</li>
+            <li>NPM Total: {{ appCtrl.application.npamTotalProjectCost }}</li>
+            <li>NPM Grant Amount: {{ appCtrl.application.npamGrantAmount }}</li>
+            <li>NPM Local Contribution: {{ appCtrl.application.npamLocalContribution }}</li>
+            <li>NPM Additional Funds: {{ appCtrl.application.npamAdditionalFunds }}</li>
+            <li>PDP Total: {{ appCtrl.application.pdpTotalProjectCost }}</li>
+            <li>PDP Grant Amount: {{ appCtrl.application.pdpGrantAmount }}</li>
+            <li>PDP Local Contribution: {{ appCtrl.application.pdpLocalContribution }}</li>
+            <li>PDP Additional Funds: {{ appCtrl.application.pdpAdditionalFunds }}</li>
+        </p> -->
+    </div>
+</div>
+<!-- section end -->
+<!-- section start -->
+<div class="section gray-bg" ng-show="appCtrl.application.pmsFlag === 'Yes'">
+    <div class="container">
+        <!-- Pavement Management Service Projects -->
+        <h2>Pavement Management Service Project</h2>
+        <p class="lead">Please note: The grant maximum for PMP projects is based on the size of your jurisdiction.</p>
+        <form role="form">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Network Center Lines Miles</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.jurisdiction.centerLineMiles" disabled>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">% of Network to be Surveyed</label>
+                        <input type="text" class="form-control" ng-if="appCtrl.application.networkSurveyPercent" ng-model="appCtrl.application.networkSurveyPercent | number:1">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Network Miles that will be Surveyed</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkMilesForSurvey" ng-change="appCtrl.updateMilesForSurvey()">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group has-feedback" ng-if="appCtrl.application.networkMilesRemaining">
+                        <label class="control-label">Network Miles Remaining to be Inspected</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkMilesRemaining | number:1">
+                    </div>
+                </div>
+            </div>
+            <!-- Additional Funds Flag -->
+            <div class="row">
+                <label class="control-label">Can your jurisdiction contribute funding to this project? If so, select 'Yes' and enter that amount below. Please note that these funds are in excess of the local match.</label>
+                <br>
+                <label class="control-label">Additional Funds Amount:</label>
+                <br>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="networkAdditionalFundsFlag" id="networkAdditionalFundsFlag" value="Yes" ng-model="appCtrl.application.networkAdditionalFundsFlag"> Yes
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="noAdditionalFunds" id="noAdditionalFunds" value="No" ng-model="appCtrl.application.networkAdditionalFundsFlag" ng-click="appCtrl.clearAdditionalFunds()"> No
+                    </label>
+                </div>
+            </div>
+            <div class="row" ng-if="appCtrl.application.networkAdditionalFundsFlag === 'Yes'">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Additional funds amount</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkAdditionalFunds" ng-change="appCtrl.updateAdditionalFunds()" ui-money-mask="0">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Percent Completed with Addtional Funding</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.networkPercentAdditionalFunds | number:1">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="control-label">Please check all that apply:</label>
+                <br>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="arterials" ng-model="appCtrl.application.arterials" ng-true-value="'1'" ng-false-value="'0'"> Arterials
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="collectors" ng-model="appCtrl.application.collectors" ng-true-value="'1'" ng-false-value="'0'"> Collectors
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="residentials" ng-model="appCtrl.application.residentials" ng-true-value="'1'" ng-false-value="'0'"> Residentials
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="other" ng-model="appCtrl.application.other" ng-true-value="'1'" ng-false-value="'0'"> Other (Please describe below)
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Other Description</label>
+                        <textarea rows="4" class="form-control" ng-model="appCtrl.application.otherDescription"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- section end -->
+<!-- section start -->
+<div class="section gray-bg" ng-show="appCtrl.application.npamFlag === 'Yes'">
+    <div class="container">
+        <!-- Non Pavement Asset Management Project -->
+        <h2>Non Pavement Asset Management Project</h2>
+        <form role="form">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Project Description</label>
+                        <textarea rows="4" class="form-control" ng-model="appCtrl.application.npamProjectdescription"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Total Estimated Cost</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.npamEstimatedcost" ui-money-mask="0">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Can your jurisdiction contribute funding to this project? If so, enter that amount here. Please note that these funds are in excess of the local match.</label>
+                        <br>
+                        <label class="control-label">Additional funds amount:</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.npamAdditionalFunds" ui-money-mask="0">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="control-label">Types of Assets:</label>
+                <br>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="appCtrl.application.signs" ng-true-value="'1'" ng-false-value="'0'"> Signs
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="appCtrl.application.stormDrains" ng-true-value="'1'" ng-false-value="'0'"> Storm Drains
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="appCtrl.application.curbs" ng-true-value="'1'" ng-false-value="'0'"> Curbs
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="appCtrl.application.gutters" ng-true-value="'1'" ng-false-value="'0'"> Gutters
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="appCtrl.application.sideWalks" ng-true-value="'1'" ng-false-value="'0'"> Sidewalks
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="appCtrl.application.trafficSignals" ng-true-value="'1'" ng-false-value="'0'"> Traffic Signals
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="appCtrl.application.streetLights" ng-true-value="'1'" ng-false-value="'0'"> Street Lights
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="appCtrl.application.otherAsset" ng-true-value="'1'" ng-false-value="'0'"> Other
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Other Description</label>
+                        <textarea rows="4" class="form-control" ng-model="appCtrl.application.otherAssetDescription"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- section end -->
+<!-- section start -->
+<div class="section gray-bg" ng-show="appCtrl.application.pdpFlag === 'Yes'">
+    <div class="container">
+        <!-- Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E) -->
+        <h2>Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E)</h2>
+        <form role="form">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Project Description</label>
+                        <textarea rows="4" class="form-control" ng-model="appCtrl.application.pdpProjectDescription"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--   <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Anticipated Construction Start Date</label>
+                        <input type="text" class="form-control" style="color:white;" ng-model="appCtrl.application.test">
+                     
+                    </div>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Anticipated Construction Start Date</label>
+                        <!--  <input type="text" class="form-control" ng-model="appCtrl.application.lastMajorInspection"> -->
+                        <p class="input-group">
+                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="appCtrl.application.pdpAnticipatedConstructionDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <span class="input-group-btn">
+            <button type="button" class="btn btn-default btn-sm" ng-click="open1()" style="margin:0;"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Total Estimated Cost</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.pdpEstimatedCost" ui-money-mask="0">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group has-feedback">
+                        <label class="control-label">Can your jurisdiction contribute funding to this project? If so, enter that amount here. Please note that these funds are in excess of the local match.</label>
+                        <br>
+                        <label class="control-label">Additional funds amount:</label>
+                        <input type="text" class="form-control" ng-model="appCtrl.application.pdpAdditionalFunds" ui-money-mask="0">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="control-label">Are streets eligible for federal aid (only arterials and collectors)?</label>
+                <br>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="streetsEligible" id="streetsEligible" value="Yes" ng-model="appCtrl.application.pdpFederalAidEligible"> Yes
+                    </label>
+                </div>
+                <div class="radio disabled">
+                    <label>
+                        <input type="radio" name="streetsNotEligible" id="streetsNotEligible" value="No" ng-model="appCtrl.application.pdpFederalAidEligible"> No
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="control-label">Does the construction phase of this project have committed funding?</label>
+                <br>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="constructionCommitted" id="constructionCommitted" value="Yes" ng-model="appCtrl.application.pdpConstructionFullyFunded"> Yes
+                    </label>
+                </div>
+                <div class="radio disabled">
+                    <label>
+                        <input type="radio" name="constructionNotCommitted" id="constructionNotCommitted" value="No" ng-model="appCtrl.application.pdpConstructionFullyFunded"> No
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- section end -->
+<div class="section gray-bg">
+    <div class="container">
+        <form>
+            <form>
+                <!-- <button type="submit" class="btn btn-default" ng-click="appCtrl.save()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button> -->
+                <button type="submit" class="btn btn-default" ng-click="appCtrl.reviewSection4()"><i class="fa fa-save"></i>&nbsp;&nbsp;Save and Continue</button>
+            </form>
+        </form>
+    </div>
+</div>
+<!-- Footer -->
+<!--  <footer style="margin:0;padding:0;"></footer> -->
