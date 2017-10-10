@@ -14,7 +14,7 @@ class SignupController {
         this.$scope = $scope;
 
         jurisdictions.getJurisdictions().then(response => {
-            $scope.agencies = response.data;
+            $scope.agencies = _.sortBy(response.data, ['jurisdictionId']);
             // console.log($scope.agencies);
 
         });

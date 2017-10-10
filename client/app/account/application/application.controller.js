@@ -73,7 +73,7 @@
             this.$scope.pageTitle = this.pages.getPageTitle();
             //Load list of jurisdictions for drop down list
             this.jurisdictions.getJurisdictions().then(response => {
-                this.names = response.data;
+                this.names = _.sortBy(response.data, ['jurisdictionId']);
                 this.application.lastMajorInspection = this.names.lastMajorInspection;
                 // console.log(this.names);
 

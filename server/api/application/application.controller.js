@@ -12,13 +12,13 @@
 import _ from 'lodash';
 import { Application } from '../../sqldb';
 
-Application.findAll()
-    .then(response => {
-        console.log(response[0]);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+// Application.findAll()
+//     .then(response => {
+//         console.log(response[0]);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     });
 
 function respondWithResult(res, statusCode) {
     statusCode = statusCode || 200;
@@ -30,6 +30,7 @@ function respondWithResult(res, statusCode) {
 }
 
 function saveUpdates(updates) {
+    // console.log(updates);
     return function(entity) {
         return entity.updateAttributes(updates)
             .then(updated => {
