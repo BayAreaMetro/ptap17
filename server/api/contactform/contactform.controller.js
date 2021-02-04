@@ -87,10 +87,11 @@ export function show(req, res) {
 export function create(req, res) {
 
     var helper = require('sendgrid').mail
-    var from_email = new helper.Email(req.body.from_address, req.body.from_name)
-    var to_email = new helper.Email('chohorst@mtc.ca.gov')
+        // var from_email = new helper.Email(req.body.from_address, req.body.from_name);
+    var from_email = new helper.Email('chohorst@mtc.ca.gov');
+    var to_email = new helper.Email('mziyambi@mtc.ca.gov')
     var subject = 'P-TAP Contact Form'
-    var content = new helper.Content('text/plain', req.body.message)
+    var content = new helper.Content('text/plain', 'From: ' + req.body.from_name + '   Email: ' + req.body.from_address + '    Message: ' + req.body.message)
     var mail = new helper.Mail(from_email, subject, to_email, content)
 
     var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);

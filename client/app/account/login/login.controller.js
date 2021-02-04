@@ -34,15 +34,15 @@ class LoginController {
     resetPassword() {
         console.log(this.forgotUser);
 
-        this.$http.post('/api/users/forgotPassword', this.forgotUser).success(function(response) {
-            console.log(response);
-        }).then(user => {
-            this.passwordSuccess = true;
-            this.forgotUser = null;
-        }).catch(err => {
-            this.passwordFail = true;
+        this.$http.post('/api/users/forgotPassword', this.forgotUser)
+            .then(response => {
+                console.log(response);
+                this.passwordSuccess = true;
+                this.forgotUser = null;
+            }).catch(err => {
+                this.passwordFail = true;
 
-        })
+            })
 
     }
 }

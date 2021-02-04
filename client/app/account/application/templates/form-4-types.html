@@ -14,11 +14,11 @@
                 <input type="checkbox" ng-model="appCtrl.application.npamFlag" ng-true-value="'Yes'" ng-false-value="'No'" ng-change="appCtrl.updateFlag()"> Non Pavement Asset Management Project
             </label>
         </div>
-        <div class="checkbox">
+        <!-- <div class="checkbox">
             <label>
                 <input type="checkbox" ng-model="appCtrl.application.pdpFlag" ng-true-value="'Yes'" ng-false-value="'No'" ng-change="appCtrl.updateFlag()"> Pavement Design Project -- Develop Plans, Specifications & Cost Estimates (PS&E)
             </label>
-        </div>
+        </div> -->
         <br>
         <!--  <p>Costs</p>
         <p>
@@ -257,7 +257,8 @@
                         <label class="control-label">Anticipated Construction Start Date</label>
                         <!--  <input type="text" class="form-control" ng-model="appCtrl.application.lastMajorInspection"> -->
                         <p class="input-group">
-                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="appCtrl.application.pdpAnticipatedConstructionDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="appCtrl.application.pdpAnticipatedConstructionDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                            />
                             <span class="input-group-btn">
             <button type="button" class="btn btn-default btn-sm" ng-click="open1()" style="margin:0;"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
